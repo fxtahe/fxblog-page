@@ -83,7 +83,7 @@ export default {
   animation: header-fadeInTop 1s forwards;
   transform: translateY(-100px);
   position: absolute;
-  z-index: $index-top;
+  z-index: $index-popper;
   @media (min-width: 1024px) {
     position: fixed;
     background-color: var(--navbar-backgroup-color);

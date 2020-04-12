@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <page-header :navList="navList"></page-header>
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
     <page-footer></page-footer>
   </div>
 </template>
