@@ -1,11 +1,11 @@
 <template>
   <header class="header" :class="isScrollFadeIn ? 'header-scrollFadeIn' : ''">
-    <div class="header-container" :class="indexMobileClass">
+    <div class="header-container" :class="homeClass">
       <div class="header-logo">
         <theme></theme>
         <i class="logo">
           <router-link tag="a" to="/">
-            Smile
+            FxBlog
           </router-link>
         </i>
       </div>
@@ -69,24 +69,30 @@ export default {
     window.addEventListener("scroll", this.handleScroll);
   },
   computed: {
-    indexMobileClass() {
-      return this.$route.path === "/" ? "index-mobile-class" : "";
+    homeClass() {
+      return this.$route.path === "/" ? "home-class" : "";
     }
   }
 };
 </script>
 <style lang="scss" scoped>
 .header {
-  position: fixed;
   left: 0;
   right: 0;
   opacity: 0;
   animation: header-fadeInTop 1s forwards;
   transform: translateY(-100px);
-  background-color: whitesmoke;
+  position: absolute;
+  z-index: $index-top;
+  @media (min-width: 1024px) {
+    position: fixed;
+    background-color: var(--navbar-backgroup-color);
+  }
 }
-.header-scrollFadeIn {
-  animation: scrollFadeIn 1s forwards;
+@media (min-width: 1024px) {
+  .header-scrollFadeIn {
+    animation: scrollFadeIn 1s forwards;
+  }
 }
 @keyframes scrollFadeIn {
   from {
@@ -127,32 +133,7 @@ export default {
     height: 100px;
   }
 }
-.is-fixed {
-  position: fixed;
-  top: -70px;
-  background-color: whitesmoke;
-  -webkit-transition: -webkit-transform 0.3s;
-  -moz-transition: -moz-transform 0.3s;
-  transition: transform 0.3s;
-  @media (max-width: 479px) {
-    top: -100px;
-  }
-}
-.is-visible {
-  -webkit-transform: translate3d(0, 100%, 0);
-  -moz-transform: translate3d(0, 100%, 0);
-  -ms-transform: translate3d(0, 100%, 0);
-  -o-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
-}
-@media (min-width: 1150px) {
-  .header-logo {
-    .logo {
-      font-size: $title-font-size-medium;
-      transition: $theme-transition;
-    }
-  }
-}
+
 .header-logo {
   .logo {
     font-size: $title-font-size-medium;
@@ -161,8 +142,9 @@ export default {
 }
 
 @media (max-width: 1023px) {
-  .home-mobile-class {
-    .header-logo {
+  .home-class {
+    .header-logo,
+    a {
       color: #fff;
     }
   }

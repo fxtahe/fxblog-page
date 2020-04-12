@@ -39,12 +39,10 @@ $nav-dot-color: #d3d5dc;
 
 /* transition
 -------------------------- */
-$theme-transition: all .1s linear;
+$theme-transition: all 0.1s linear;
+$theme-color-transtion: all 0.4s linear;
 
 /* font-family
 -------------------------- */
-$font-family-normal: -apple-system,
-"Helvetica Neue",
-Helvetica,
-Arial,
-sans-serif;
+$font-family-normal: -apple-system, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;

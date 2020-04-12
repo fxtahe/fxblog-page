@@ -46,27 +46,18 @@ export default {
 
     .nav-link {
       cursor: pointer;
-      transition: $theme-transition;
-
-      &:hover ~ .nav-dot {
-        background-color: $nav-dot-color;
+      transition: $theme-color-transtion;
+      &:hover {
+        color: var(--theme-active);
       }
     }
-
-    .nuxt-link-exact-active {
-      & ~ .nav-dot {
-        background-color: var(--theme-active);
-      }
-
-      &:hover ~ .nav-dot {
-        background-color: var(--theme-active);
-      }
+    .router-link-exact-active {
+      color: var(--theme-active);
     }
 
     .icon-search {
       font-size: $font-size-large;
       cursor: pointer;
-      transition: $theme-transition;
 
       &:hover {
         color: var(--theme-active);

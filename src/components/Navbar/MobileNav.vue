@@ -161,7 +161,7 @@ export default {
   width: 300px;
   padding: 40px 30px 20px;
   border-bottom-left-radius: 5px;
-  background: var(--app-background-color-light);
+  background: var(--navbar-backgroup-color);
   box-shadow: 0 2px 24px 5px rgba(0, 0, 0, 0.1);
   z-index: $index-top;
 }
@@ -196,12 +196,19 @@ export default {
 
     .nav-link {
       position: relative;
+      transition: $theme-color-transtion;
+      &:hover {
+        color: var(--theme-active);
+      }
+    }
+    .router-link-exact-active {
+      color: var(--theme-active);
     }
   }
 }
 
 @media (max-width: 1023px) {
-  .home-mobile-class {
+  .home-class {
     .search-wrapper {
       .icon-search {
         color: #fff;
