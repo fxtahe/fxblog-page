@@ -1,23 +1,21 @@
 <template>
   <div class="carousel">
     <div class="carousel-container">
-      <div class="carousel-stage">
+      <div class="carousel-stage" :style="{ width: screenWidth }">
         <swiper :options="swiperOption">
           <swiper-slide
             class="swiper-item"
             v-for="item of swiperList"
             :key="item.id"
           >
-            <carousel-item></carousel-item>
+            <carousel-item
+              v-for="(article, index) in articles"
+              :key="index"
+              :article="article"
+            ></carousel-item>
           </swiper-slide>
         </swiper>
-      </div>
-      <div class="carousel-dots swiper-pagination" slot="pagination">
-        <button role="button" class="carousel-dot active">01</button>
-        <button role="button" class="carousel-dot">02</button>
-        <button role="button" class="carousel-dot">03</button>
-        <button role="button" class="carousel-dot">04</button>
-        <button role="button" class="carousel-dot">05</button>
+        <div class="carousel-dots swiper-pagination" slot="pagination"></div>
       </div>
     </div>
   </div>
@@ -25,21 +23,21 @@
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import CarouselItem from "@/components/CarouselCard/CarouselItem.vue";
+import defaultCover from "@/assets/image/defaultcover.jpg";
 import "swiper/css/swiper.css";
 export default {
   components: {
     Swiper,
     SwiperSlide,
     CarouselItem
-    //CarouselItem
   },
   data() {
     return {
-      screenWidth: "2048px", //屏幕宽度
+      screenWidth: document.body.clientWidth,
       swiperOption: {
         centeredSlides: true,
         autoplay: {
-          delay: 5000,
+          delay: 10000000,
           disableOnInteraction: false
         },
         pagination: {
@@ -53,11 +51,44 @@ export default {
         //循环
         loop: true,
         //滑动速度
-        speed: 2000
-        // delay:1000
+        speed: 2000,
+        observer: true,
+        observeSlideChildren: true
       },
       //三张轮播，使用变量循环
-      swiperList: [1, 2, 3]
+      swiperList: [1],
+      articles: [
+        {
+          id: 1,
+          authorId: 1,
+          author: {
+            authorId: 1,
+            authorName: "fxtahe"
+          },
+          title: "Ehcahce使用",
+          excerpt:
+            "Ehcache 是一个开源的、基于标准的，健壮、可靠、快速、简单、轻量级的java分布式缓存，支持与其他框架的集成，是Hibernate默认的CacheProvider。同时也实现了JSR107的规范，是Jcache的一种实现。 Ehcache 目前提供四层模型，支持四种级别：...",
+          content: null,
+          markdown: null,
+          likes: null,
+          views: null,
+          createDate: "2020-04-15T15:22:53",
+          updateDate: null,
+          state: 2,
+          categoryId: 1,
+          tags: [
+            {
+              id: 1,
+              tagName: "ehcache",
+              useCount: 1
+            }
+          ],
+          category: {
+            id: 1,
+            categoryName: "java"
+          }
+        }
+      ]
     };
   },
   methods: {
@@ -65,16 +96,22 @@ export default {
       this.screenWidth = window.innerWidth + "px";
     }
   },
+  computed: {
+    articleCover() {
+      return defaultCover;
+    }
+  },
   created() {
     window.addEventListener("resize", this.getWidth);
     this.getWidth();
   },
+  mounted() {},
   destroyed() {
-    window.removeEventListener("resize", this.getHeight);
+    window.removeEventListener("resize", this.getWidth);
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scope>
 .carousel {
   padding-left: calc((100% - 1650px) / 2 + 15px);
   position: relative;
@@ -114,11 +151,6 @@ export default {
   z-index: 0;
 }
 
-// .carousel-stage {
-//   height: 572px;
-//   transform: translate3d(0px, 0px, 0px);
-//   transition: all 0s ease 0s;
-// }
 @media all and (max-width: 767px) {
   .carousel-container {
     .carousel-dots {

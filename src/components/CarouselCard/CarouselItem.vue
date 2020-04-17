@@ -1,28 +1,30 @@
 <template>
-  <div class="carousel-item" :style="{ width: screenWidth }">
+  <div class="carousel-item">
     <div
       class="carousel-item-wrapper"
-      style="background-image: url(http://delas.electronthemes-ghost.com/content/images/2019/03/jakob-owens.jpg);"
+      :style="{ backgroundImage: `url(${articleCover})` }"
     >
       <article class="feature-content">
         <div class="post-meta">
-          <p><a href="/tag/photography/">Photography</a></p>
           <p>
-            <time class="post-date" datetime="2020-04-11">11 april, 2020</time>
+            <a href="/tag/photography/">{{ article.category.categoryName }}</a>
+          </p>
+          <p>
+            <time class="post-date" datetime="2020-04-11">{{
+              article.createDate
+            }}</time>
           </p>
         </div>
         <div class="author-meta">
           <i class="fa fa-user"></i> Posted by -
-          <a href="/author/ghost/">Jahangir Alom</a>
+          <a href="/author/ghost/">{{ article.author.authorName }}</a>
         </div>
         <div class="title-meta">
-          <h2>Woman Bring Can't Creepeth</h2>
+          <h2>{{ article.title }}</h2>
         </div>
         <div class="intro-meta">
           <p>
-            Void bring heaven it blessed the, day appear bearing make which
-            signs seas greater him. Gathered creeping. Creature very thing fill
-            signs fish a heaven our set Midst.
+            {{ article.excerpt }}
           </p>
         </div>
         <div class="read-more">
@@ -33,36 +35,24 @@
   </div>
 </template>
 <script>
+import defaultCover from "@/assets/image/defaultcover.jpg";
 export default {
-  data() {
-    return {
-      screenWidth: "2048px", //屏幕宽度
-      swiperOption: {
-        spaceBetween: 30,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true
-        }
-      }
-    };
-  },
-  methods: {
-    getWidth() {
-      this.screenWidth = window.innerWidth + "px";
+  props: {
+    article: {
+      type: Object,
+      default: () => ({})
     }
   },
-  created() {
-    window.addEventListener("resize", this.getWidth);
-    this.getWidth();
-  },
-  destroyed() {
-    window.removeEventListener("resize", this.getHeight);
+  computed: {
+    articleCover() {
+      return this.article.cover ? this.article.cover : defaultCover;
+    }
   }
 };
 </script>
 <style lang="scss" scoped>
 .carousel-item {
-  width: 1690px;
+  width: 100%;
   float: left;
 }
 .carousel-item-wrapper {
@@ -78,7 +68,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: var(--image-color-cover);
-    //background-image: linear-gradient(234deg, #a15757, #4e7886);
+    background-image: linear-gradient(234deg, #a15757, #4e7886);
     content: "";
   }
   &:after {
@@ -92,8 +82,6 @@ export default {
     letter-spacing: 6.13px;
     font-size: 16px;
     z-index: 1;
-  }
-  @media (max-width: 1023px) {
   }
 }
 .feature-content {
@@ -195,34 +183,6 @@ export default {
     h2 {
       font-size: 36px;
     }
-  }
-  .author-card-wrapper {
-    .single-author-card {
-      margin-bottom: 150px;
-    }
-  }
-  .tag-items-wrap {
-    .tag-repeater {
-      &:nth-child(n) {
-        width: 100%;
-      }
-    }
-  }
-  .search-results {
-    right: -101px;
-    width: 100vw;
-  }
-  .member-banner {
-    padding: 80px 0;
-  }
-  .Membership-plan-wrap {
-    padding: 60px 0 20px;
-  }
-  .ln-card .card-content {
-    margin-top: 0;
-    padding-top: 30px;
-    clip-path: none;
-    width: 100%;
   }
 }
 @media all and (max-width: 575px) {

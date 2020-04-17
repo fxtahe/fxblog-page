@@ -33,7 +33,7 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   font-size: 1rem;
-  width: 400px;
+  width: 330px;
   margin-right: 10%;
   .nav-list-item {
     position: relative;

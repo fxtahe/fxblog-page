@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <page-header :navList="navList"></page-header>
-    <keep-alive>
-      <router-view />
-    </keep-alive>
+    <router-view />
     <page-footer></page-footer>
   </div>
 </template>
@@ -58,7 +56,7 @@ export default {
 </script>
 <style lang="scss">
 #app {
-  height: 1800px;
+  //height: 1800px;
 }
 .main-container {
   height: 100px;
