@@ -8,11 +8,7 @@
             v-for="item of swiperList"
             :key="item.id"
           >
-            <carousel-item
-              v-for="(article, index) in articles"
-              :key="index"
-              :article="article"
-            ></carousel-item>
+            <slot></slot>
           </swiper-slide>
         </swiper>
         <div class="carousel-dots swiper-pagination" slot="pagination"></div>
@@ -22,14 +18,12 @@
 </template>
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import CarouselItem from "@/components/CarouselCard/CarouselItem.vue";
 import defaultCover from "@/assets/image/defaultcover.jpg";
 import "swiper/css/swiper.css";
 export default {
   components: {
     Swiper,
-    SwiperSlide,
-    CarouselItem
+    SwiperSlide
   },
   data() {
     return {
@@ -51,44 +45,10 @@ export default {
         //循环
         loop: true,
         //滑动速度
-        speed: 2000,
-        observer: true,
-        observeSlideChildren: true
+        speed: 2000
       },
       //三张轮播，使用变量循环
-      swiperList: [1],
-      articles: [
-        {
-          id: 1,
-          authorId: 1,
-          author: {
-            authorId: 1,
-            authorName: "fxtahe"
-          },
-          title: "Ehcahce使用",
-          excerpt:
-            "Ehcache 是一个开源的、基于标准的，健壮、可靠、快速、简单、轻量级的java分布式缓存，支持与其他框架的集成，是Hibernate默认的CacheProvider。同时也实现了JSR107的规范，是Jcache的一种实现。 Ehcache 目前提供四层模型，支持四种级别：...",
-          content: null,
-          markdown: null,
-          likes: null,
-          views: null,
-          createDate: "2020-04-15T15:22:53",
-          updateDate: null,
-          state: 2,
-          categoryId: 1,
-          tags: [
-            {
-              id: 1,
-              tagName: "ehcache",
-              useCount: 1
-            }
-          ],
-          category: {
-            id: 1,
-            categoryName: "java"
-          }
-        }
-      ]
+      swiperList: [1]
     };
   },
   methods: {
@@ -174,19 +134,19 @@ export default {
 }
 @media (min-width: 1024px) {
   .carousel {
-    padding-top: 100px;
-    &:before {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 160px;
-      height: calc(100% + 16px);
-      content: "";
-      background-color: #1a2024;
-    }
+    //padding-top: 100px;
+    // &:before {
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
+    //   //width: 160px;
+    //   height: calc(100% + 16px);
+    //   content: "";
+    //   background-color: #1a2024;
+    // }
   }
   .carousel-container {
-    padding: 60px 0;
+    //padding: 60px 0;
   }
 }
 </style>

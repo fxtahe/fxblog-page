@@ -1,5 +1,11 @@
 <template>
-  <header class="header" :class="isScrollFadeIn ? 'header-scrollFadeIn' : ''">
+  <header
+    class="header"
+    :class="[
+      isScrollFadeIn ? 'header-scrollFadeIn' : '',
+      isTop && homeClass ? 'top' : ''
+    ]"
+  >
     <div class="header-container" :class="homeClass">
       <div class="header-logo">
         <theme></theme>
@@ -34,9 +40,8 @@ export default {
   },
   data() {
     return {
-      isFxed: false,
-      isVisible: false,
       isScrollFadeIn: false,
+      isTop: true,
       previousTop: 0
     };
   },
@@ -47,6 +52,12 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       var offsetHeight = document.querySelector("header").offsetHeight;
+      console.log(offsetHeight);
+      if (scrollTop == 0) {
+        this.isTop = true;
+      } else {
+        this.isTop = false;
+      }
       if (scrollTop < this.previousTop) {
         //up
         if (this.isScrollFadeIn || scrollTop > offsetHeight) {
@@ -87,6 +98,7 @@ export default {
   @media (min-width: 1024px) {
     position: fixed;
     background-color: var(--navbar-backgroup-color);
+    //background-color: rgba(25, 28, 30, 0.33);
   }
 }
 @media (min-width: 1024px) {
@@ -118,8 +130,25 @@ export default {
     -webkit-transform: translateY(0);
   }
 }
+.top {
+  background-color: transparent;
+  .header-logo,
+  a {
+    color: #fff;
+  }
+}
+@media (min-width: 1023px) {
+  .top {
+    ::v-deep a {
+      color: #fff;
+    }
+    ::v-deep .icon-search {
+      color: #fff;
+    }
+  }
+}
+
 .header-container {
-  @include container;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,8 +158,10 @@ export default {
   margin: auto;
   z-index: 100000;
   box-sizing: border-box;
-  @media (max-width: 479px) {
+  @media (max-width: 1023px) {
     height: 100px;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 }
 

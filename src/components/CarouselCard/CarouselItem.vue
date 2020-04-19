@@ -2,7 +2,7 @@
   <div class="carousel-item">
     <div
       class="carousel-item-wrapper"
-      :style="{ backgroundImage: `url(${articleCover})` }"
+      style="background-image:url(https://images.unsplash.com/photo-1587166366445-b2bbdf54b2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)"
     >
       <article class="feature-content">
         <div class="post-meta">
@@ -68,7 +68,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: var(--image-color-cover);
-    background-image: linear-gradient(234deg, #a15757, #4e7886);
+    //background-image: linear-gradient(234deg, #a15757, #4e7886);
     content: "";
   }
   &:after {

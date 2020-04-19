@@ -55,9 +55,6 @@ export default {
 };
 </script>
 <style lang="scss">
-#app {
-  //height: 1800px;
-}
 .main-container {
   height: 100px;
 }
