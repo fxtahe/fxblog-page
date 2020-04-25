@@ -1,7 +1,7 @@
 <template>
   <div class="carousel">
     <div class="carousel-container">
-      <div class="carousel-stage" :style="{ width: screenWidth }">
+      <div class="carousel-stage" style="width:100%">
         <swiper :options="swiperOption">
           <swiper-slide
             class="swiper-item"
@@ -79,8 +79,6 @@ export default {
   }
 }
 .carousel-container {
-  position: relative;
-
   .carousel-dots {
     position: absolute;
     top: 50%;
@@ -146,7 +144,7 @@ export default {
     // }
   }
   .carousel-container {
-    //padding: 60px 0;
+    @include container;
   }
 }
 </style>

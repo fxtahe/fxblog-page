@@ -29,20 +29,16 @@ export default {
 <style lang="scss" scoped>
 .nav-list {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: 1rem;
-  width: 330px;
-  margin-right: 10%;
+  // justify-content: center;
+  // align-items: center;
+  // flex-wrap: wrap;
+  // font-size: 1rem;
+  // width: 100%;
+  // margin-right: 10%;
   .nav-list-item {
     position: relative;
-    font-weight: bold;
+    font-weight: normal;
     margin: 5px 12px;
-
-    &:first-child {
-      margin-left: 0;
-    }
 
     .nav-link {
       cursor: pointer;

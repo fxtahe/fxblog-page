@@ -1,21 +1,14 @@
 <template>
   <header
     class="header"
-    :class="[
-      isScrollFadeIn ? 'header-scrollFadeIn' : '',
-      isTop && homeClass ? 'top' : ''
-    ]"
+    :class="[isTop && !isScrollFadeIn ? 'top' : '', homeClass]"
   >
-    <div class="header-container" :class="homeClass">
+    <div class="header-container">
       <div class="header-logo">
         <theme></theme>
-        <i class="logo">
-          <router-link tag="a" to="/">
-            FxBlog
-          </router-link>
-        </i>
+        <i class="logo">Fxblog</i>
       </div>
-      <nav class="nav-wrapper">
+      <nav class="nav-wrapper center-nav">
         <desktop-nav class="desktop-nav" :navList="navList"></desktop-nav>
         <mobile-nav :navList="navList"></mobile-nav>
       </nav>
@@ -41,7 +34,7 @@ export default {
   data() {
     return {
       isScrollFadeIn: false,
-      isTop: true,
+      isTop: false,
       previousTop: 0
     };
   },
@@ -52,8 +45,8 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       var offsetHeight = document.querySelector("header").offsetHeight;
-      console.log(offsetHeight);
-      if (scrollTop == 0) {
+      console.log(scrollTop);
+      if (scrollTop > 100) {
         this.isTop = true;
       } else {
         this.isTop = false;
@@ -90,63 +83,96 @@ export default {
 .header {
   left: 0;
   right: 0;
-  opacity: 0;
-  animation: header-fadeInTop 1s forwards;
-  transform: translateY(-100px);
-  position: absolute;
   z-index: $index-popper;
   @media (min-width: 1024px) {
-    position: fixed;
-    background-color: var(--navbar-backgroup-color);
+    //position: fixed;
+
     //background-color: rgba(25, 28, 30, 0.33);
   }
 }
+.header-container {
+  @include container;
+}
 @media (min-width: 1024px) {
-  .header-scrollFadeIn {
-    animation: scrollFadeIn 1s forwards;
+  // .header-scrollFadeIn {
+  //   animation: scrollFadeIn 1s forwards;
+  // }
+  .center-nav {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .header-logo {
+    display: none !important;
   }
 }
-@keyframes scrollFadeIn {
-  from {
-    opacity: 1;
-    -webkit-transform: translateY(0);
+@keyframes nav-fixed {
+  0% {
+    margin-top: -100px;
   }
 
-  to {
-    opacity: 0;
-    -webkit-transform: translateY(-100px);
+  50% {
+    margin-top: -90px;
   }
-}
-@-webkit-keyframes header-fadeInTop {
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-  }
-}
 
-@keyframes header-fadeInTop {
   100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
+    margin-top: 0;
   }
 }
+// @keyframes scrollFadeIn {
+//   from {
+//     opacity: 1;
+//     -webkit-transform: translateY(0);
+//   }
+
+//   to {
+//     opacity: 0;
+//     -webkit-transform: translateY(-100px);
+//   }
+// }
+// @-webkit-keyframes header-fadeInTop {
+//   100% {
+//     opacity: 1;
+//     -webkit-transform: translateY(0);
+//   }
+// }
+
+// @keyframes header-fadeInTop {
+//   100% {
+//     opacity: 1;
+//     -webkit-transform: translateY(0);
+//   }
+// }
 .top {
-  background-color: transparent;
-  .header-logo,
-  a {
-    color: #fff;
-  }
+  margin: 0;
+  position: fixed;
+  //background: #ffffff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  animation-name: nav-fixed;
+  animation-duration: 0.9s;
+  animation-timing-function: ease-out;
+  box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.49);
+  background-color: var(--navbar-backgroup-color);
 }
-@media (min-width: 1023px) {
-  .top {
-    ::v-deep a {
-      color: #fff;
-    }
-    ::v-deep .icon-search {
-      color: #fff;
-    }
-  }
-}
+// .top {
+//   background-color: transparent;
+//   .header-logo,
+//   a {
+//     color: #fff;
+//   }
+// }
+// @media (min-width: 1023px) {
+//   .top {
+//     ::v-deep a {
+//       color: #fff;
+//     }
+//     ::v-deep .icon-search {
+//       color: #fff;
+//     }
+//   }
+// }
 
 .header-container {
   display: flex;
@@ -173,6 +199,9 @@ export default {
 }
 
 @media (max-width: 1023px) {
+  .header {
+    position: absolute;
+  }
   .home-class {
     .header-logo,
     a {

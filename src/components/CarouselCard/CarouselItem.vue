@@ -4,7 +4,7 @@
       class="carousel-item-wrapper"
       style="background-image:url(https://images.unsplash.com/photo-1587166366445-b2bbdf54b2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)"
     >
-      <article class="feature-content">
+      <!-- <article class="feature-content">
         <div class="post-meta">
           <p>
             <a href="/tag/photography/">{{ article.category.categoryName }}</a>
@@ -30,7 +30,7 @@
         <div class="read-more">
           <a href="/">CONTINUE READEING</a>
         </div>
-      </article>
+      </article> -->
     </div>
   </div>
 </template>
@@ -57,7 +57,8 @@ export default {
 }
 .carousel-item-wrapper {
   position: relative;
-  padding: 120px 150px;
+  //padding: 120px 150px;
+  height: 600px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -169,11 +170,11 @@ export default {
     }
   }
 }
+
 @media all and (max-width: 767px) {
   .carousel-item {
     .carousel-item-wrapper {
-      padding-left: 60px;
-      padding-right: 60px;
+      height: 400px;
       &:after {
         left: -30px;
       }

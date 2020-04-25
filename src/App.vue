@@ -1,5 +1,15 @@
 <template>
   <div id="app">
+    <div class="logo-area">
+      <div class="container">
+        <div class="logo-box">
+          <a href="index.html"
+            ><figure><img src="images/logo/logo1.png" alt="" /></figure
+          ></a>
+          <h2 style="text-align:center">FxBolg</h2>
+        </div>
+      </div>
+    </div>
     <page-header :navList="navList"></page-header>
     <router-view />
     <page-footer></page-footer>
@@ -57,5 +67,16 @@ export default {
 <style lang="scss">
 .main-container {
   height: 100px;
+}
+.logo-area {
+  position: relative;
+  width: 100%;
+  //background: #ffffff;
+  padding: 48px 0px 40px 0px;
+}
+@media (max-width: 1023px) {
+  .logo-area {
+    display: none !important;
+  }
 }
 </style>
