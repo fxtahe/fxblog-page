@@ -45,7 +45,6 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       var offsetHeight = document.querySelector("header").offsetHeight;
-      console.log(scrollTop);
       if (scrollTop > 100) {
         this.isTop = true;
       } else {
@@ -84,19 +83,11 @@ export default {
   left: 0;
   right: 0;
   z-index: $index-popper;
-  @media (min-width: 1024px) {
-    //position: fixed;
-
-    //background-color: rgba(25, 28, 30, 0.33);
-  }
 }
 .header-container {
   @include container;
 }
 @media (min-width: 1024px) {
-  // .header-scrollFadeIn {
-  //   animation: scrollFadeIn 1s forwards;
-  // }
   .center-nav {
     margin-left: auto;
     margin-right: auto;
@@ -118,34 +109,9 @@ export default {
     margin-top: 0;
   }
 }
-// @keyframes scrollFadeIn {
-//   from {
-//     opacity: 1;
-//     -webkit-transform: translateY(0);
-//   }
-
-//   to {
-//     opacity: 0;
-//     -webkit-transform: translateY(-100px);
-//   }
-// }
-// @-webkit-keyframes header-fadeInTop {
-//   100% {
-//     opacity: 1;
-//     -webkit-transform: translateY(0);
-//   }
-// }
-
-// @keyframes header-fadeInTop {
-//   100% {
-//     opacity: 1;
-//     -webkit-transform: translateY(0);
-//   }
-// }
 .top {
   margin: 0;
   position: fixed;
-  //background: #ffffff;
   top: 0;
   left: 0;
   width: 100%;
@@ -155,24 +121,10 @@ export default {
   animation-timing-function: ease-out;
   box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.49);
   background-color: var(--navbar-backgroup-color);
+  @media (max-width: 1023px) {
+    position: absolute;
+  }
 }
-// .top {
-//   background-color: transparent;
-//   .header-logo,
-//   a {
-//     color: #fff;
-//   }
-// }
-// @media (min-width: 1023px) {
-//   .top {
-//     ::v-deep a {
-//       color: #fff;
-//     }
-//     ::v-deep .icon-search {
-//       color: #fff;
-//     }
-//   }
-// }
 
 .header-container {
   display: flex;
@@ -184,11 +136,11 @@ export default {
   margin: auto;
   z-index: 100000;
   box-sizing: border-box;
-  @media (max-width: 1023px) {
-    height: 100px;
-    padding-left: 5%;
-    padding-right: 5%;
-  }
+  // @media (max-width: 1023px) {
+  //   height: 100px;
+  //   padding-left: 5%;
+  //   padding-right: 5%;
+  // }
 }
 
 .header-logo {
@@ -199,10 +151,8 @@ export default {
 }
 
 @media (max-width: 1023px) {
-  .header {
-    position: absolute;
-  }
   .home-class {
+    position: absolute;
     .header-logo,
     a {
       color: #fff;

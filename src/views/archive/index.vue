@@ -140,7 +140,7 @@ h1 span {
   margin-left: -1px;
   width: 2px;
   height: 100%;
-  background: #000000;
+  background: var(--font-color-primary);
   z-index: 1;
 }
 
@@ -171,10 +171,10 @@ h1 span {
 .marker {
   width: 16px;
   height: 16px;
-  //border-radius: 50%;
-  border: 2px solid #f5f7fa;
+  //border-radius: 50%;var()
+  border: 2px solid var(--app-background-color);
   //background: #4fc1e9;
-  background: black;
+  background: var(--font-color-primary);
   margin-top: 10px;
   z-index: 9999;
 }
