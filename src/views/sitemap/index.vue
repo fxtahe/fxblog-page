@@ -2,59 +2,70 @@
   <div class="sitemap">
     <div class="sitemap-wrapper">
       <div class="tags">
-        <h2 class="tags-title">Tags</h2>
-        <ul class="tag-list">
-          <li class="tag-item">java</li>
-          <li class="tag-item">python</li>
-          <li class="tag-item">java</li>
-          <li class="tag-item">python</li>
-          <li class="tag-item">java</li>
-          <li class="tag-item">python</li>
-        </ul>
+        <div class="sitemap-title">Tags</div>
+        <div class="tags-wrapper">
+          <tags :tags="tags"></tags>
+        </div>
       </div>
       <div class="category">
-        <h2 class="category-title">
-          Categorys
-        </h2>
-        <ul data-v-d0af0c3e="" class="category-list">
-          <li data-v-d0af0c3e="" class="category-item">
-            <div data-v-d0af0c3e="" class="category-wrapper">
+        <div class="sitemap-title">Categorys</div>
+        <ul class="category-list">
+          <router-link :tag="li" class="category-item" :to="`/category/poetry`">
+            <div class="category-wrapper">
               <div
-                data-v-d0af0c3e=""
                 class="category-image"
-                style='background-image: url("https://resource.shirmy.me/lighthouse.jpeg");'
+                style="background-image: url('https://resource.shirmy.me/lighthouse.jpeg');"
               ></div>
-              <h2 data-v-d0af0c3e="" class="title">Essay</h2>
-              <p data-v-d0af0c3e="" class="desc">#惟有文字 长情陪伴#</p>
+              <h2 class="title">Essay</h2>
+              <p class="desc">#惟有文字 长情陪伴#</p>
             </div>
-          </li>
-          <li data-v-d0af0c3e="" class="category-item">
-            <div data-v-d0af0c3e="" class="category-wrapper">
+          </router-link>
+          <router-link :tag="li" class="category-item" :to="`/category/poetry`">
+            <div class="category-wrapper">
               <div
-                data-v-d0af0c3e=""
                 class="category-image"
-                style='background-image: url("https://resource.shirmy.me/blog/covers/dark-line.jpg");'
+                style="background-image: url('https://resource.shirmy.me/blog/covers/dark-line.jpg');"
               ></div>
-              <h2 data-v-d0af0c3e="" class="title">Poetry</h2>
-              <p data-v-d0af0c3e="" class="desc">诗</p>
+              <h2 class="title">Poetry</h2>
+              <p class="desc">诗</p>
             </div>
-          </li>
-          <li data-v-d0af0c3e="" class="category-item">
-            <div data-v-d0af0c3e="" class="category-wrapper">
+          </router-link>
+          <router-link :tag="li" class="category-item" :to="`/category/poetry`">
+            <div class="category-wrapper">
               <div
-                data-v-d0af0c3e=""
                 class="category-image"
-                style='background-image: url("https://resource.shirmy.me/blog/covers/category/coding-cover.jpg");'
+                style="background-image: url('https://resource.shirmy.me/blog/covers/category/coding-cover.jpg');"
               ></div>
-              <h2 data-v-d0af0c3e="" class="title">Code</h2>
-              <p data-v-d0af0c3e="" class="desc">代码</p>
+              <h2 class="title">Code</h2>
+              <p class="desc">代码</p>
             </div>
-          </li>
+          </router-link>
         </ul>
       </div>
     </div>
   </div>
 </template>
+<script>
+const tags = [
+  { tagName: "python" },
+  { tagName: "java" },
+  { tagName: "python" },
+  { tagName: "python" },
+  { tagName: "python" },
+  { tagName: "python" }
+];
+import Tags from "@/components/Tag";
+export default {
+  components: {
+    Tags
+  },
+  data() {
+    return {
+      tags: tags
+    };
+  }
+};
+</script>
 <style lang="scss" scoped>
 .sitemap {
   margin: 0 10%;
@@ -74,43 +85,39 @@
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-.tags {
-  display: block;
+.tags,
+.category {
+  .sitemap-title {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    display: block; // 必须是块元素（形成上下居中效果） 否则无效果
+    position: relative; // 定位为横线的父元素
+  }
+  .sitemap-title::before {
+    left: 10%;
+  }
+  .sitemap-title::after {
+    right: 10%;
+  }
+  .sitemap-title::before,
+  .sitemap-title::after {
+    content: ""; // CSS伪类用法
+    position: absolute; // 定位横线的位置
+    top: 50%;
+    background-color: #eee;
+    width: 30%; // 横线的宽度，每边分半为50%则是左右两边横线之间没有空隙
+    height: 1px; // 横线的高度
+  }
+  text-align: center;
+
   margin-bottom: 2.5em;
 }
-.tags-title,
-.category-title {
-  color: #adabac;
-  font-size: 1.11111em;
-  margin-bottom: 1.5em;
-  position: relative;
-  text-align: center;
-  h2 {
-    font-size: 1.66667em;
-    margin: 1.5em 0 0.66667em;
-  }
+.tags-wrapper {
+  display: inline-block;
 }
 
-.tags-title:before,
-.category-title:before,
-.tags-title:after,
-.category-title:after {
-  content: "\00a0\2013\00a0";
-}
 .tag-list {
   text-align: center;
-}
-.tag-item {
-  display: inline-block;
-  padding: 15px 30px;
-  margin: 5px;
-  color: var(--font-color-primary);
-  font-size: 12px;
-  font-weight: normal;
-  letter-spacing: 1.5px;
-  border-radius: 1px;
-  background: var(--tag-color);
-  cursor: pointer;
 }
 
 .category-list {
@@ -123,7 +130,7 @@
     flex: 1 auto;
     position: relative;
     margin: 15px;
-    border-radius: 2px;
+    border-radius: 6px;
     overflow: hidden;
     transition: all 0.25s ease-in-out;
     cursor: pointer;

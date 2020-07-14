@@ -3,11 +3,7 @@
     <div class="carousel-container">
       <div class="carousel-stage" style="width:100%">
         <swiper :options="swiperOption">
-          <swiper-slide
-            class="swiper-item"
-            v-for="item of swiperList"
-            :key="item.id"
-          >
+          <swiper-slide class="swiper-item" v-for="item of swiperList" :key="item.id">
             <slot></slot>
           </swiper-slide>
         </swiper>
@@ -83,7 +79,7 @@ export default {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 50px;
+    right: 16%;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;

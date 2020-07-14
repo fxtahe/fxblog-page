@@ -3,36 +3,9 @@
     <div
       class="carousel-item-wrapper"
       style="background-image:url(https://images.unsplash.com/photo-1587166366445-b2bbdf54b2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)"
-    >
-      <!-- <article class="feature-content">
-        <div class="post-meta">
-          <p>
-            <a href="/tag/photography/">{{ article.category.categoryName }}</a>
-          </p>
-          <p>
-            <time class="post-date" datetime="2020-04-11">{{
-              article.createDate
-            }}</time>
-          </p>
-        </div>
-        <div class="author-meta">
-          <i class="fa fa-user"></i> Posted by -
-          <a href="/author/ghost/">{{ article.author.authorName }}</a>
-        </div>
-        <div class="title-meta">
-          <h2>{{ article.title }}</h2>
-        </div>
-        <div class="intro-meta">
-          <p>
-            {{ article.excerpt }}
-          </p>
-        </div>
-        <div class="read-more">
-          <a href="/">CONTINUE READEING</a>
-        </div>
-      </article> -->
-    </div>
+    ></div>
   </div>
+  <!--  -->
 </template>
 <script>
 import defaultCover from "@/assets/image/defaultcover.jpg";
@@ -69,7 +42,6 @@ export default {
     width: 100%;
     height: 100%;
     background-color: var(--image-color-cover);
-    //background-image: linear-gradient(234deg, #a15757, #4e7886);
     content: "";
   }
   &:after {

@@ -3,9 +3,6 @@
     <div class="logo-area">
       <div class="container">
         <div class="logo-box">
-          <a href="index.html"
-            ><figure><img src="images/logo/logo1.png" alt="" /></figure
-          ></a>
           <h2 style="text-align:center">FxBolg</h2>
         </div>
       </div>
@@ -13,13 +10,14 @@
     <page-header :navList="navList"></page-header>
     <router-view />
     <page-footer></page-footer>
+    <scroll-top></scroll-top>
   </div>
 </template>
 <script>
 import { mapActions } from "vuex";
 import PageHeader from "@/components/Header/Header.vue";
 import PageFooter from "@/components/Footer/Footer.vue";
-
+import ScrollTop from "@/components/ScrollTop/index";
 const navList = [
   {
     link: "/",
@@ -36,17 +34,14 @@ const navList = [
   {
     link: "/about",
     name: "关于"
-  },
-  {
-    link: "/messages",
-    name: "留言墙"
   }
 ];
 export default {
   name: "App",
   components: {
     PageHeader,
-    PageFooter
+    PageFooter,
+    ScrollTop
   },
   data() {
     return {

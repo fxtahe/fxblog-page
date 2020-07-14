@@ -1,28 +1,23 @@
 <template>
   <div>
     <carousel-card>
-      <carousel-item
-        v-for="(article, index) in articles"
-        :key="index"
-        :article="article"
-      ></carousel-item>
+      <carousel-item v-for="(article, index) in articles" :key="index" :article="article"></carousel-item>
     </carousel-card>
     <section class="article-wrapper">
-      <article-wrapper></article-wrapper>
+      <article-list></article-list>
     </section>
   </div>
 </template>
 <script>
 import CarouselCard from "@/components/CarouselCard/CarouselCard.vue";
 import CarouselItem from "@/components/CarouselCard/CarouselItem.vue";
-//import ArticleList from "@/components/ArticleList/ArticleList.vue";
-import ArticleWrapper from "@/components/ArticleList/ArticleWrapper.vue";
+import ArticleList from "@/components/ArticleList/ArticleList.vue";
+//import ArticleWrapper from "@/components/ArticleList/ArticleWrapper.vue";
 export default {
   components: {
     CarouselCard,
     CarouselItem,
-    //ArticleList,
-    ArticleWrapper
+    ArticleList
   },
   data() {
     return {
@@ -70,7 +65,7 @@ export default {
 }
 @media (min-width: 1200px) {
   .article-wrapper {
-    max-width: 1140px;
+    max-width: 84%;
   }
 }
 </style>

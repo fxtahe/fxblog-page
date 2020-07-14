@@ -20,6 +20,16 @@ const routes = [
     name: "sitemap"
   },
   {
+    path: "/tag/:name",
+    component: () => import("@/views/tag/index"),
+    name: "tag"
+  },
+  {
+    path: "/category/:name",
+    component: () => import("@/views/category/index"),
+    name: "category"
+  },
+  {
     path: "/about",
     component: () => import("@/views/about/index"),
     name: "about"

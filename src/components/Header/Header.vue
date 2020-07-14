@@ -1,29 +1,30 @@
 <template>
-  <header
-    class="header"
-    :class="[isTop && !isScrollFadeIn ? 'top' : '', homeClass]"
-  >
-    <div class="header-container">
-      <div class="header-logo">
-        <theme></theme>
-        <i class="logo">Fxblog</i>
+  <header class="header">
+    <div class="header-wrapper">
+      <div class="header-container" :class="[isTop && !isScrollFadeIn ? 'top' : '' , homeClass]">
+        <div class="header-logo">
+          <i class="logo">Fxblog</i>
+        </div>
+        <nav class="nav-wrapper center-nav">
+          <desktop-nav class="desktop desktop-nav" :navList="navList"></desktop-nav>
+          <mobile-menu :navList="navList"></mobile-menu>
+        </nav>
+        <switch-theme class="desktop"></switch-theme>
       </div>
-      <nav class="nav-wrapper center-nav">
-        <desktop-nav class="desktop-nav" :navList="navList"></desktop-nav>
-        <mobile-nav :navList="navList"></mobile-nav>
-      </nav>
     </div>
   </header>
 </template>
 <script>
 import DesktopNav from "@/components/Navbar/DesktopNav.vue";
-import MobileNav from "@/components/Navbar/MobileNav.vue";
-import Theme from "@/components/Theme/Theme.vue";
+//import MobileNav from "@/components/Navbar/MobileNav.vue";
+import MobileMenu from "@/components/Navbar/MobileMenu.vue";
+import SwitchTheme from "@/components/SwitchTheme";
 export default {
   components: {
     DesktopNav,
-    MobileNav,
-    Theme
+    //MobileNav,
+    SwitchTheme,
+    MobileMenu
   },
   props: {
     navList: {
@@ -45,7 +46,7 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       var offsetHeight = document.querySelector("header").offsetHeight;
-      if (scrollTop > 100) {
+      if (scrollTop > 200) {
         this.isTop = true;
       } else {
         this.isTop = false;
@@ -95,6 +96,9 @@ export default {
   .header-logo {
     display: none !important;
   }
+  .header-wrapper {
+    height: 70px;
+  }
 }
 @keyframes nav-fixed {
   0% {
@@ -132,15 +136,8 @@ export default {
   align-items: center;
   height: 70px;
   width: 100%;
-  max-width: 1200px;
-  margin: auto;
   z-index: 100000;
   box-sizing: border-box;
-  // @media (max-width: 1023px) {
-  //   height: 100px;
-  //   padding-left: 5%;
-  //   padding-right: 5%;
-  // }
 }
 
 .header-logo {
@@ -161,8 +158,11 @@ export default {
 }
 
 @media (max-width: 1023px) {
-  .desktop-nav {
+  .desktop {
     display: none !important;
   }
+}
+.desktop-nav {
+  padding-left: 80px;
 }
 </style>

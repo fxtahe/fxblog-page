@@ -3,16 +3,7 @@
     <div class="article-item-container">
       <div class="article-item-wrapper">
         <div class="article-item">
-          <div
-            class="bg-medium"
-            data-sr-id="2"
-            style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.65s ease-in-out 0s, opacity 0.65s ease-in-out 0s; transition: transform 0.65s ease-in-out 0s, opacity 0.65s ease-in-out 0s; "
-          >
-            <div class="vertical text-featured">
-              <div class="text rotate">
-                Featured
-              </div>
-            </div>
+          <div class="bg-medium">
             <div
               class="featured-flex"
               data-sr-id="1"
@@ -20,39 +11,28 @@
             >
               <div class="left">
                 <div class="appear">
-                  <a href="/the-sky-perfectly-blended-into-the-landscape/"
-                    ><div
+                  <a href="/the-sky-perfectly-blended-into-the-landscape/">
+                    <div
                       class="featured-image featured-home-image"
                       style="background-image: url(https://images.unsplash.com/photo-1587166366445-b2bbdf54b2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)"
-                    ></div
-                  ></a>
+                    ></div>
+                  </a>
                 </div>
               </div>
               <div class="right">
                 <article class="featured-post-wrap">
                   <div class="featured-post">
                     <h2>
-                      <a href="/the-sky-perfectly-blended-into-the-landscape/"
-                        >The sky perfectly blended into the landscape</a
-                      >
+                      <a
+                        href="/the-sky-perfectly-blended-into-the-landscape/"
+                      >The Shy - The God Of Top</a>
                     </h2>
                     <div class="item-excerpt">
                       <p>
-                        Et harum quidem rerum facilis est et expedita
-                        distinctio. Ut proverbia non nulla veriora sint quam
-                        vestra dogmata. Si sapiens, ne tum quidem miser, cum ab
-                        Oroete, praetore Darei, in crucem actus est. Tum ille
-                        timide vel potius verecunde: Facio, inquit. Quae
-                        similitudo in genere etiam humano apparet. Quo
-                        plebiscito decreta a senatu est consuli
-                        <a href="/the-sky-perfectly-blended-into-the-landscape/"
-                          >[...]</a
-                        >
+                        这是一段简介关于文章的见解这是一段简介关于文章的见解这是一段简介关于文章的见解这是一段简介关于文章的见解
+                        这是一段简介关于文章的见解这是一段简介关于文章的见解这是一段简介关于文章的见解这是一段简介关于文章的见解
                       </p>
                     </div>
-                    <a href="/the-sky-perfectly-blended-into-the-landscape/"
-                      ><span class="featured-more-button">Read more</span></a
-                    >
                   </div>
                 </article>
               </div>
@@ -62,56 +42,35 @@
       </div>
       <div class="article-item-wrapper">
         <div class="article-item">
-          <div
-            class="bg-medium"
-            data-sr-id="2"
-            style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.65s ease-in-out 0s, opacity 0.65s ease-in-out 0s; transition: transform 0.65s ease-in-out 0s, opacity 0.65s ease-in-out 0s; "
-          >
-            <div class="vertical text-featured">
-              <div class="text rotate">
-                Featured
-              </div>
-            </div>
-            <div
-              class="featured-flex"
-              data-sr-id="1"
-              style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.65s ease-in-out 0s, opacity 0.65s ease-in-out 0s; transition: transform 0.65s ease-in-out 0s, opacity 0.65s ease-in-out 0s; "
-            >
+          <div class="bg-medium">
+            <div class="featured-flex">
               <div class="left">
                 <div class="appear">
-                  <a href="/the-sky-perfectly-blended-into-the-landscape/"
-                    ><div
+                  <a href="/the-sky-perfectly-blended-into-the-landscape/">
+                    <div
                       class="featured-image featured-home-image"
                       style="background-image: url(https://images.unsplash.com/photo-1587166366445-b2bbdf54b2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)"
-                    ></div
-                  ></a>
+                    ></div>
+                  </a>
                 </div>
               </div>
               <div class="right">
                 <article class="featured-post-wrap">
                   <div class="featured-post">
                     <h2>
-                      <a href="/the-sky-perfectly-blended-into-the-landscape/"
-                        >The sky perfectly blended into the landscape</a
-                      >
+                      <a
+                        href="/the-sky-perfectly-blended-into-the-landscape/"
+                      >The Shy - The God Of Top</a>
                     </h2>
                     <div class="item-excerpt">
                       <p>
-                        Et harum quidem rerum facilis est et expedita
-                        distinctio. Ut proverbia non nulla veriora sint quam
-                        vestra dogmata. Si sapiens, ne tum quidem miser, cum ab
-                        Oroete, praetore Darei, in crucem actus est. Tum ille
-                        timide vel potius verecunde: Facio, inquit. Quae
-                        similitudo in genere etiam humano apparet. Quo
-                        plebiscito decreta a senatu est consuli
-                        <a href="/the-sky-perfectly-blended-into-the-landscape/"
-                          >[...]</a
-                        >
+                        这是一段简介关于文章的见解这是一段简介关于文章的见解这是一段简介关于文章的见解这是一段简介关于文章的见解
+                        这是一段简介关于文章的见解这是一段简介关于文章的见解这是一段简介关于文章的见解这是一段简介关于文章的见解
+                        <a
+                          href="/the-sky-perfectly-blended-into-the-landscape/"
+                        >[...]</a>
                       </p>
                     </div>
-                    <!-- <a href="/the-sky-perfectly-blended-into-the-landscape/"
-                    ><span class="featured-more-button">Read more</span></a
-                  > -->
                   </div>
                 </article>
               </div>
@@ -130,38 +89,19 @@ export default {};
   margin-top: 20px;
 }
 .article-item {
-  //height: 680px;
   position: relative;
   z-index: 3;
   margin: 150px 0 25vh 0;
-  color: #161b3d;
-}
-a {
-  color: #161b3d;
 }
 .bg-medium {
   margin: 0 3%;
   padding-bottom: 12vh;
-  //background-image: linear-gradient(to top, #42b98347, #569dad7d);
-  background-color: whitesmoke;
+  background-color: var(--article-list-back);
 }
 .text-featured {
   top: -90px;
 }
-.vertical {
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  width: 2px;
-  height: 220px;
-  cursor: default;
-  background-image: linear-gradient(
-    58deg,
-    #e3745d 0%,
-    #f4a16b 47%,
-    #ffbf74 100%
-  );
-}
+
 .text {
   font-size: 24px;
   position: absolute;
@@ -189,24 +129,14 @@ a {
   -ms-flex: 0 0 42%;
   flex: 0 0 42%;
 }
-.appear {
-  -webkit-transition: -webkit-transform 0.25s ease-in-out;
-  transition: -webkit-transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
-  a {
-    -webkit-transition: all 0.2s;
-    transition: all 0.2s;
-  }
-}
 .featured-image {
-  height: 630px;
+  height: 380px;
   background: no-repeat center center;
   background-size: cover;
 }
 .right {
   margin-top: 0;
-  margin: 15vh 6.5% 0 1.5%;
+  //margin: 15vh 6.5% 0 1.5%;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 42%;
   flex: 0 0 42%;
@@ -227,7 +157,7 @@ a {
 .featured-post {
   padding: 0 30px;
   h2 {
-    font-size: 40px;
+    font-size: 24px;
     font-family: "Spectral", Helvetica, Arial, sans-serif;
     line-height: 1.3;
     margin: 0;
@@ -240,22 +170,9 @@ a {
       margin-bottom: 25px;
     }
   }
-  .featured-more-button {
-    font-size: 14px;
-    font-weight: bold;
-    line-height: normal;
-    width: auto;
-    min-height: 40px;
-    margin: 0;
-    padding: 17px 50px;
-    letter-spacing: 1px;
-    border: 2px solid;
-    border-radius: 50px;
-    outline: none;
-  }
 }
-//media
-@media (max-width: 1199px) {
+
+@media (max-width: 1023px) {
   .article-item {
     margin-bottom: 20vh;
   }
