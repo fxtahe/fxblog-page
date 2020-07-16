@@ -70,6 +70,22 @@ export default {
   components: {
     Tags
   },
+  props: {
+    articles: {
+      type: Array,
+      default: () => []
+    },
+
+    loading: {
+      type: Boolean,
+      default: false
+    },
+
+    total: {
+      type: Number,
+      default: 0
+    }
+  },
   data() {
     return {
       tags: tags

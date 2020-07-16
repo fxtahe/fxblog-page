@@ -1,5 +1,15 @@
 <template>
   <div class="sitemap">
+    <div class="author" v-if="authors.length>1">
+      <div class="author-avatar">
+        <img
+          v-for="author in authors"
+          :key="author.id"
+          :src="author.avatar"
+          alt="author.authorName"
+        />
+      </div>
+    </div>
     <div class="sitemap-wrapper">
       <div class="tags">
         <div class="sitemap-title">Tags</div>
@@ -10,34 +20,17 @@
       <div class="category">
         <div class="sitemap-title">Categorys</div>
         <ul class="category-list">
-          <router-link :tag="li" class="category-item" :to="`/category/poetry`">
+          <router-link
+            :tag="`li`"
+            v-for="category in categories"
+            :key="category.id"
+            class="category-item"
+            :to="`/category/${category.id}`"
+          >
             <div class="category-wrapper">
-              <div
-                class="category-image"
-                style="background-image: url('https://resource.shirmy.me/lighthouse.jpeg');"
-              ></div>
-              <h2 class="title">Essay</h2>
-              <p class="desc">#惟有文字 长情陪伴#</p>
-            </div>
-          </router-link>
-          <router-link :tag="li" class="category-item" :to="`/category/poetry`">
-            <div class="category-wrapper">
-              <div
-                class="category-image"
-                style="background-image: url('https://resource.shirmy.me/blog/covers/dark-line.jpg');"
-              ></div>
-              <h2 class="title">Poetry</h2>
-              <p class="desc">诗</p>
-            </div>
-          </router-link>
-          <router-link :tag="li" class="category-item" :to="`/category/poetry`">
-            <div class="category-wrapper">
-              <div
-                class="category-image"
-                style="background-image: url('https://resource.shirmy.me/blog/covers/category/coding-cover.jpg');"
-              ></div>
-              <h2 class="title">Code</h2>
-              <p class="desc">代码</p>
+              <div class="category-image" :style="{backgroundImage: `url(${category.cover})`}"></div>
+              <h2 class="title">{{category.categoryName}}</h2>
+              <p class="desc">{{category.description}}</p>
             </div>
           </router-link>
         </ul>
@@ -46,32 +39,62 @@
   </div>
 </template>
 <script>
-const tags = [
-  { tagName: "python" },
-  { tagName: "java" },
-  { tagName: "python" },
-  { tagName: "python" },
-  { tagName: "python" },
-  { tagName: "python" }
-];
+// const tags = [
+//   { tagName: "python" },
+//   { tagName: "java" },
+//   { tagName: "python" },
+//   { tagName: "python" },
+//   { tagName: "python" },
+//   { tagName: "python" }
+// ];
 import Tags from "@/components/Tag";
+import { mapState } from "vuex";
 export default {
   components: {
     Tags
   },
   data() {
-    return {
-      tags: tags
-    };
+    return {};
+  },
+  methods: {},
+  computed: {
+    ...mapState({
+      authors: state => state.sitemap.authors,
+      categories: state => state.sitemap.categories,
+      tags: state => state.sitemap.tags
+    })
+  },
+  created() {
+    this.$store.dispatch("sitemap/getAuthorsInfo");
   }
 };
 </script>
 <style lang="scss" scoped>
 .sitemap {
   margin: 0 10%;
-  padding: 100px 0;
+  padding: 20px 0;
+}
+.author {
+  text-align: center;
+  .author-avatar {
+    padding: 40px 0;
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 20px;
+      filter: grayscale(100%);
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover,
+      .active {
+        filter: none;
+      }
+    }
+  }
 }
 .sitemap-wrapper {
+  font-family: "Hind", sans-serif;
   position: relative;
   z-index: 99;
   display: -webkit-box;

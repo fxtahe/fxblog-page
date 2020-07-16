@@ -1,4 +1,4 @@
-import { get, post, put, del } from "@/utils/service";
+import { get, put } from "@/utils/service";
 class Article {
   // 获取所有文章
   async getArticles(params = {}) {
@@ -11,7 +11,7 @@ class Article {
     if (params.search) {
       query.search = params.search;
     }
-    const res = await get("v1/blog/article/blog/articles", query);
+    const res = await get("/fxblog/article/blog/articles", query);
     return res;
   }
 

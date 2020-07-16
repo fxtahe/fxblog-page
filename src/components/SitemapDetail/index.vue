@@ -14,10 +14,13 @@
   </div>
 </template>
 <script>
-import HeaderDetail from "@/components/HeaderDetail/index";
+//import HeaderDetail from "@/components/HeaderDetail/index";
 import ArticleList from "@/components/ArticleList/ArticleList.vue";
-
+import { mapState } from "vuex";
 export default {
+  components: {
+    ArticleList
+  },
   props: {
     id: Number,
 
@@ -39,6 +42,28 @@ export default {
     cover: {
       type: String,
       default: ""
+    }
+  },
+  data() {
+    return {
+      page: 0
+    };
+  },
+  computed: {
+    ...mapState({
+      loading: state => state.sitemap.loading,
+      articles: state => state.sitemap.articles,
+      total: state => state.sitemap.total
+    })
+  },
+  methods: {
+    onLoadMore() {
+      this.page++;
+      const params = {
+        page: this.page,
+        [this.type === "tag" ? "tagId" : "categoryId"]: this.id
+      };
+      this.$store.dispatch("sitemap/getMoreArticles", params);
     }
   }
 };
