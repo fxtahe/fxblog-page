@@ -2,16 +2,16 @@ import { get, put } from "@/utils/service";
 class Article {
   // 获取所有文章
   async getArticles(params = {}) {
-    let query = {
-      categoryName: params.categoryName ? params.categoryName : "",
-      authorId: params.authorId ? params.authorId : 0,
-      tagName: params.tagName ? params.tagName : "",
-      page: params.page ? params.page : 0
-    };
-    if (params.search) {
-      query.search = params.search;
-    }
-    const res = await get("/fxblog/article/blog/articles", query);
+    // let query = {
+    //   categoryId: params.categoryId ? params.categoryId : 0,
+    //   authorId: params.authorId ? params.authorId : 0,
+    //   tagId: params.tagId ? params.tagId : 0,
+    //   page: params.page ? params.page : 0
+    // };
+    // if (params.search) {
+    //   query.search = params.search;
+    // }
+    const res = await get("/fxblog/article/page", params);
     return res;
   }
 

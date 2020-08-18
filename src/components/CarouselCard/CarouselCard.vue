@@ -3,8 +3,8 @@
     <div class="carousel-container">
       <div class="carousel-stage" style="width:100%">
         <swiper :options="swiperOption">
-          <swiper-slide class="swiper-item" v-for="item of swiperList" :key="item.id">
-            <slot></slot>
+          <swiper-slide class="swiper-item" v-for="item of articles" :key="item.id">
+            <carousel-item :article="item"></carousel-item>
           </swiper-slide>
         </swiper>
         <div class="carousel-dots swiper-pagination" slot="pagination"></div>
@@ -15,11 +15,19 @@
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import defaultCover from "@/assets/image/defaultcover.jpg";
+import CarouselItem from "@/components/CarouselCard/CarouselItem.vue";
 import "swiper/css/swiper.css";
 export default {
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    CarouselItem
+  },
+  props: {
+    articles: {
+      type: Array,
+      default: () => []
+    }
   },
   data() {
     return {
@@ -42,9 +50,9 @@ export default {
         loop: true,
         //滑动速度
         speed: 2000
-      },
+      }
       //三张轮播，使用变量循环
-      swiperList: [1]
+      // swiperList: [1, 2, 3]
     };
   },
   methods: {

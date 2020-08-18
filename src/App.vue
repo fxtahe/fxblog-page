@@ -8,7 +8,11 @@
       </div>
     </div>
     <page-header :navList="navList"></page-header>
-    <router-view />
+    <main class="view">
+      <transition name="fade-transform" mode="out-in">
+        <router-view />
+      </transition>
+    </main>
     <page-footer></page-footer>
     <scroll-top></scroll-top>
   </div>
@@ -60,6 +64,7 @@ export default {
 };
 </script>
 <style lang="scss">
+@import "@/styles/animation.scss";
 .main-container {
   height: 100px;
 }

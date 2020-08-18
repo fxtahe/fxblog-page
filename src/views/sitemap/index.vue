@@ -1,52 +1,66 @@
 <template>
   <div class="sitemap">
     <div class="author" v-if="authors.length>1">
-      <div class="author-avatar">
-        <img
-          v-for="author in authors"
-          :key="author.id"
-          :src="author.avatar"
-          alt="author.authorName"
-        />
-      </div>
+      <ul class="author-list">
+        <li v-for="author in authors" :key="author.id">
+          <div class="author-avatar">
+            <img
+              :src="author.avatar"
+              :class="authorInfo.id==author.id?'active':''"
+              @click="changeAuthor(author)"
+              :alt="author.authorName"
+            />
+            <p>
+              <router-link
+                class="author-link"
+                :class="authorInfo.id==author.id?'active':''"
+                :to="`/author/${author.authorName}/${author.id}`"
+              >{{author.authorName}}</router-link>
+            </p>
+          </div>
+        </li>
+      </ul>
     </div>
     <div class="sitemap-wrapper">
       <div class="tags">
         <div class="sitemap-title">Tags</div>
-        <div class="tags-wrapper">
-          <tags :tags="tags"></tags>
-        </div>
+        <transition name="fade-transform" mode="out-in">
+          <div class="tags-wrapper" :key="index">
+            <tags :tags="tags" v-if="tags && tags.length>0"></tags>
+            <p v-else>空空如也~</p>
+          </div>
+        </transition>
       </div>
       <div class="category">
         <div class="sitemap-title">Categorys</div>
-        <ul class="category-list">
-          <router-link
-            :tag="`li`"
-            v-for="category in categories"
-            :key="category.id"
-            class="category-item"
-            :to="`/category/${category.id}`"
-          >
-            <div class="category-wrapper">
-              <div class="category-image" :style="{backgroundImage: `url(${category.cover})`}"></div>
-              <h2 class="title">{{category.categoryName}}</h2>
-              <p class="desc">{{category.description}}</p>
-            </div>
-          </router-link>
-        </ul>
+        <transition name="fade-transform" mode="out-in">
+          <ul class="category-list" :key="index" v-if="categories && categories.length>0">
+            <router-link
+              :tag="`li`"
+              v-for="category in categories"
+              :key="category.id"
+              class="category-item"
+              @click.native="choiceCategory(category)"
+              :to="`/category/${category.categoryName}/${category.id}`"
+            >
+              <div class="category-wrapper">
+                <div
+                  class="category-image"
+                  :style="{backgroundImage: `url(${category.cover==''?defaultCover:category.cover})`}"
+                ></div>
+                <h2 class="title">{{category.categoryName}}</h2>
+                <p class="desc">{{category.description}}</p>
+              </div>
+            </router-link>
+          </ul>
+          <p v-else>空空如也~</p>
+        </transition>
       </div>
     </div>
   </div>
 </template>
 <script>
-// const tags = [
-//   { tagName: "python" },
-//   { tagName: "java" },
-//   { tagName: "python" },
-//   { tagName: "python" },
-//   { tagName: "python" },
-//   { tagName: "python" }
-// ];
+import defaultCover from "@/assets/image/bg.jpg";
 import Tags from "@/components/Tag";
 import { mapState } from "vuex";
 export default {
@@ -54,12 +68,25 @@ export default {
     Tags
   },
   data() {
-    return {};
+    return {
+      index: 0,
+      defaultCover: defaultCover
+    };
   },
-  methods: {},
+  methods: {
+    changeAuthor(author) {
+      this.index++;
+      this.$store.dispatch("sitemap/setAuthorInfo", author);
+    },
+    choiceCategory(category) {
+      console.log(category);
+      this.$store.dispatch("sitemap/setCategory", category);
+    }
+  },
   computed: {
     ...mapState({
       authors: state => state.sitemap.authors,
+      authorInfo: state => state.sitemap.author,
       categories: state => state.sitemap.categories,
       tags: state => state.sitemap.tags
     })
@@ -70,24 +97,48 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import "@/styles/animation.scss";
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 .sitemap {
   margin: 0 10%;
   padding: 20px 0;
 }
 .author {
   text-align: center;
+  .author-list {
+    display: inline-flex;
+    .active {
+      color: var(--theme-active);
+    }
+  }
   .author-avatar {
     padding: 40px 0;
+    &:hover {
+      img {
+        filter: none;
+      }
+      .author-link {
+        color: var(--theme-active);
+      }
+    }
     img {
       width: 80px;
       height: 80px;
-      border-radius: 50%;
-      margin: 0 20px;
+      border-radius: 8%;
+      margin: 0 40px;
       filter: grayscale(100%);
       transition: 0.3s;
       cursor: pointer;
       &:hover,
-      .active {
+      &.active {
         filter: none;
       }
     }

@@ -1,5 +1,5 @@
 <template>
-  <tag-detail type="category" :name="name" :cover="cover" :description="description"></tag-detail>
+  <detail :type="`category`" :id="id" :name="name" :cover="cover" :description="description"></detail>
 </template>
 <script>
 import Detail from "@/components/SitemapDetail/index";
@@ -9,16 +9,19 @@ export default {
   },
   data() {
     return {
-      name: "",
-      description: "",
-      cover: "",
-      page: 0
+      id: this.$route.params.id,
+      name: this.$route.params.name,
+      description: this.$store.state.sitemap.category.description,
+      cover: this.$store.state.sitemap.category.cover
     };
   },
-  methods: {
-    getArticles() {}
-  },
-  created() {}
+  methods: {},
+  created() {
+    this.$store.dispatch("sitemap/getArticles", {
+      categoryId: this.$route.params.id,
+      page: 0
+    });
+  }
 };
 </script>
 <style lang="scss" scoped>

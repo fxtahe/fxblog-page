@@ -20,14 +20,24 @@ const routes = [
     name: "sitemap"
   },
   {
-    path: "/tag/:name",
+    path: "/tag/:name/:id",
     component: () => import("@/views/tag/index"),
     name: "tag"
   },
   {
-    path: "/category/:name",
+    path: "/category/:name/:id",
     component: () => import("@/views/category/index"),
     name: "category"
+  },
+  {
+    path: "/author/:name/:id",
+    component: () => import("@/views/author/index"),
+    name: "author"
+  },
+  {
+    path: "/article/:id",
+    component: () => import("@/views/article/index"),
+    name: "article"
   },
   {
     path: "/about",

@@ -1,24 +1,74 @@
 <template>
   <div class="carousel-item">
-    <div
-      class="carousel-item-wrapper"
-      style="background-image:url(https://images.unsplash.com/photo-1587166366445-b2bbdf54b2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)"
-    ></div>
+    <div class="carousel-item-wrapper" :style="{backgroundImage: 'url(' + articleCover + ')'}">
+      <div class="feature-content">
+        <div class="tag-list">
+          <tags :tags="article.tags"></tags>
+        </div>
+        <div class="post-meta">
+          <p>
+            <router-link
+              class="category-name"
+              :to="`/category/${category.categoryName}/${category.id}`"
+            >{{category.categoryName}}</router-link>
+          </p>
+          <p>
+            <time
+              class="post-date"
+              :datetime="article.createDate"
+            >{{timestampToTime(article.createDate)}}</time>
+          </p>
+        </div>
+        <div>
+          <h2>
+            <router-link :to="`/article/${article.id}`" class="article-title">{{article.title}}</router-link>
+          </h2>
+        </div>
+        <div class="author-meta">
+          <div class="author-avatar">
+            <img class="avatar" :src="article.author.avatar" :alt="article.author.authorName" />
+          </div>
+          <span class="post-author">
+            by
+            <router-link :to="`/author/${article.author.id}`">{{article.author.authorName}}</router-link>
+          </span>
+        </div>
+        <div class="read-more">
+          <router-link :to="`/article/${article.id}`">CONTINUE READING</router-link>
+        </div>
+      </div>
+    </div>
   </div>
   <!--  -->
 </template>
 <script>
+import { timestampToTime } from "@/utils/index";
+import Tags from "@/components/Tag";
 import defaultCover from "@/assets/image/defaultcover.jpg";
 export default {
+  components: {
+    Tags
+  },
   props: {
     article: {
       type: Object,
-      default: () => ({})
+      default: () => {}
     }
   },
+  data() {
+    return {};
+  },
   computed: {
+    category() {
+      return this.article.category;
+    },
     articleCover() {
       return this.article.cover ? this.article.cover : defaultCover;
+    }
+  },
+  methods: {
+    timestampToTime(timestamp) {
+      return timestampToTime(timestamp);
     }
   }
 };
@@ -30,7 +80,6 @@ export default {
 }
 .carousel-item-wrapper {
   position: relative;
-  //padding: 120px 150px;
   height: 600px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -49,7 +98,7 @@ export default {
     left: 30px;
     top: 50%;
     transform: translateY(-50%) rotate(-90deg);
-    content: "FEATURED";
+    content: "";
     text-transform: uppercase;
     color: #ffffff;
     letter-spacing: 6.13px;
@@ -60,11 +109,13 @@ export default {
 .feature-content {
   position: relative;
   max-width: 700px;
+  padding: 120px 150px;
+  margin: auto;
   color: #ffffff;
-  h2 {
-    font-size: 40px;
+  .article-title {
+    color: var(--font-color-light);
+    font-size: 30px;
     line-height: 1.3;
-    margin-bottom: 20px;
   }
   p {
     font-size: 15px;
@@ -74,27 +125,40 @@ export default {
   border-left: 3px solid var(--link-color);
   padding-left: 15px;
   margin-bottom: 10px;
-  p {
-    color: #b1b1b1;
-    font-size: 14px;
+  .category-name {
+    color: var(--font-color-light);
+    font-size: 16px;
     font-style: italic;
     margin: 0;
     a {
-      color: #b1b1b1;
+      color: var(--font-color-light);
       &:hover {
         color: var(--link-color);
       }
     }
   }
+  .post-date {
+    color: var(--font-color-light);
+  }
 }
 .author-meta {
-  color: #b1b1b1;
-  font-size: 14px;
-  margin-bottom: 30px;
-  a {
-    color: #b1b1b1;
-    &:hover {
-      color: var(--link-color);
+  margin-top: 20px;
+  display: inline-flex;
+  .avatar {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+  }
+  .post-author {
+    display: block;
+    font-family: "Playfair Display", serif;
+    font-size: 0.88889em;
+    font-style: italic;
+    line-height: 1.25;
+    margin: auto;
+    padding-left: 10px;
+    a {
+      color: var(--font-color-light);
     }
   }
 }
@@ -103,7 +167,7 @@ export default {
   margin-top: 40px;
   a {
     font-size: 16px;
-    color: #ffffff;
+    color: var(--font-color-light);
     position: relative;
     padding: 10px 15px;
     display: inline-block;
@@ -143,7 +207,7 @@ export default {
   }
 }
 
-@media all and (max-width: 767px) {
+@media (max-width: 767px) {
   .carousel-item {
     .carousel-item-wrapper {
       height: 400px;
@@ -153,20 +217,32 @@ export default {
     }
   }
   .feature-content {
+    padding-left: 60px;
+    padding-right: 60px;
     h2 {
-      font-size: 36px;
+      font-size: 28px;
     }
   }
 }
-@media all and (max-width: 575px) {
-  .card-item-wrapper {
-    padding: 100px 15px 100px;
-    &:after {
-      left: auto;
-      right: -20px;
-      top: 90px;
-      transform: translateY(0) rotate(90deg);
-      letter-spacing: 3px;
+@media (max-width: 575px) {
+  .carousel-item {
+    .card-item-wrapper {
+      padding: 100px 15px 100px;
+      &:after {
+        left: auto;
+        right: -20px;
+        top: 90px;
+        transform: translateY(0) rotate(90deg);
+        letter-spacing: 3px;
+      }
+      .feature-content {
+        padding: 60px 15px 100px;
+      }
+    }
+    .read-more {
+      a {
+        float: right;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <detail :id="id" :name="name" :type="`tag`" :cover="cover"></detail>
+  <detail :id="id" :name="name" :type="author" :avatar="cover" :cover="cover"></detail>
 </template>
 <script>
 import Detail from "@/components/SitemapDetail/index";
@@ -17,7 +17,7 @@ export default {
   },
   created() {
     this.$store.dispatch("sitemap/getArticles", {
-      tagId: this.$route.params.id,
+      authorId: this.$route.params.id,
       page: 0
     });
   }
