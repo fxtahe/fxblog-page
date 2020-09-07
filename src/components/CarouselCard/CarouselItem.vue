@@ -116,6 +116,9 @@ export default {
     color: var(--font-color-light);
     font-size: 30px;
     line-height: 1.3;
+    @media (max-width: 479px) {
+      font-size: $title-font-size-base;
+    }
   }
   p {
     font-size: 15px;
@@ -164,7 +167,7 @@ export default {
 }
 
 .read-more {
-  margin-top: 40px;
+  margin-top: 20px;
   a {
     font-size: 16px;
     color: var(--font-color-light);

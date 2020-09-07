@@ -1,5 +1,10 @@
 <template>
   <nav class="mobile-nav-container" v-click-outside="hide">
+    <div class="search-wrapper">
+      <!-- <i class="icon icon-search" @click.stop="showSearch()"></i> -->
+      <!-- <search></search> -->
+    </div>
+
     <div
       class="mobile-nav-btn"
       :class="{ 'is-active': isShowMobileNav }"
@@ -70,23 +75,24 @@ export default {
   margin-top: 14px;
 
   @media (max-width: 1023px) {
-    display: inline-block;
+    display: flex;
   }
 }
-
 .search-wrapper {
   @include extend-click;
   float: left;
   margin-right: 20px;
+  //border-right: 1px solid var(--font-color-primary);
   cursor: pointer;
 
-  .icon-search {
+  ::v-deep.icon-search {
     font-size: $font-size-extra-large;
     transition: $theme-transition;
   }
 }
 
 .mobile-nav-btn {
+  margin: auto;
   float: left;
   @include extend-click;
   position: relative;
@@ -162,7 +168,7 @@ export default {
   border-bottom-left-radius: 5px;
   background: var(--navbar-backgroup-color);
   box-shadow: 0 2px 24px 5px rgba(0, 0, 0, 0.1);
-  z-index: $index-top;
+  z-index: 10000;
 }
 
 .close-btn {
@@ -185,7 +191,7 @@ export default {
 
   .nav-list-item {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: 16px;
     font-weight: $font-weight-bold;
 
@@ -212,6 +218,9 @@ export default {
       .icon-search {
         color: #fff;
       }
+    }
+    .search {
+      border-right: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     .mobile-nav-inner {

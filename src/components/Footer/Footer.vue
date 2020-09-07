@@ -2,9 +2,13 @@
   <footer class="footer-container">
     <div class="footer-wrapper">
       <div class="footer-social-section-wrapper">
-        <div class="brand"><h5>Fxblog</h5></div>
+        <div class="brand">
+          <h5>
+            <router-link to="/">Fxblog</router-link>
+          </h5>
+        </div>
         <div class="social-section">
-          <a href="270295484@qq.com" target="_blank">
+          <a href="mailto:270295484@qq.com" target="_blank">
             <i class="icon icon-mail" style="font-size: 30px;"></i>
           </a>
           <a href="https://github.com/fxtahe" target="_blank">
@@ -13,8 +17,10 @@
         </div>
       </div>
       <div class="footer-copyright-section-wrapper">
-        <span class="copyright">© 2020 <span class="logo">Fxblog</span></span
-        >. All Right Reserved.
+        <span class="copyright">
+          © 2020
+          <span class="logo">Fxblog</span>
+        </span>. All Right Reserved.
         <div class="record-number">♥</div>
       </div>
     </div>
@@ -39,6 +45,9 @@ export default {};
       text-align: center;
       font-size: 45px;
       margin-bottom: 15px;
+      @media (max-width: 500px) {
+        font-size: 30px;
+      }
     }
   }
   .social-section {

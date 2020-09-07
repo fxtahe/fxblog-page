@@ -79,7 +79,6 @@ export default {
       this.$store.dispatch("sitemap/setAuthorInfo", author);
     },
     choiceCategory(category) {
-      console.log(category);
       this.$store.dispatch("sitemap/setCategory", category);
     }
   },
@@ -150,7 +149,6 @@ export default {
   z-index: 99;
   display: -webkit-box;
   display: -ms-flexbox;
-  //display: flex;
   max-width: calc(100% + 30px);
   margin: 0px auto 16vh;
   padding: 0 8%;
@@ -164,8 +162,8 @@ export default {
   .sitemap-title {
     font-size: 1.2em;
     margin-bottom: 40px;
-    display: block; // 必须是块元素（形成上下居中效果） 否则无效果
-    position: relative; // 定位为横线的父元素
+    display: block;
+    position: relative;
   }
   .sitemap-title::before {
     left: 10%;
@@ -195,7 +193,6 @@ export default {
 }
 
 .category-list {
-  display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   margin: 0 -15px;

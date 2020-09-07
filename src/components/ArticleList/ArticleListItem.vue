@@ -8,7 +8,7 @@
               <router-link :to="`/article/${article.id}`">
                 <div
                   class="featured-image featured-home-image"
-                  :style="{backgroundImage: 'url(' + article.cover + ')'}"
+                  :style="{ backgroundImage: 'url(' + article.cover + ')' }"
                 ></div>
               </router-link>
             </div>
@@ -19,18 +19,21 @@
                 <div class="post-tags">
                   <tags :tags="article.tags"></tags>
                 </div>
-                <div class="post-category">
+                <!-- <div class="post-category">
                   <p>
-                    #
                     <router-link
                       class="category-name"
                       :to="`/category/${article.category.categoryName}/${article.category.id}`"
                     >{{article.category.categoryName}}</router-link>
                   </p>
-                </div>
+                </div>-->
                 <div class="post-header-wrap">
                   <h2 class="post-title">
-                    <router-link :to="`/article/${article.id}`">{{article.title}}</router-link>
+                    <router-link :to="`/article/${article.id}`">
+                      {{
+                      article.title
+                      }}
+                    </router-link>
                   </h2>
                   <div class="post-meta">
                     <div class="author-avatar avatar-center">
@@ -42,28 +45,38 @@
                     </div>
                     <span class="post-author">
                       by
-                      <router-link
-                        :to="`/author/${article.author.id}`"
-                      >{{article.author.authorName}}</router-link>
+                      <router-link :to="`/author/${article.author.id}`">
+                        {{
+                        article.author.authorName
+                        }}
+                      </router-link>
                     </span>
                     <span class="post-date">
-                      <time
-                        class="published"
-                        datetime="2020-01-17"
-                      >{{timestampToTime(article.createDate)}}</time>
+                      <time class="published" datetime="2020-01-17">
+                        {{
+                        timestampToTime(article.createDate)
+                        }}
+                      </time>
                     </span>
                   </div>
                   <!-- .post-meta -->
                 </div>
                 <!-- .post-header-wrap -->
               </header>
+              <div class="info-wrapper">
+                <i class="icon icon-eye"></i>
+                <span class="count">{{ article.views }}</span>
+                <i class="icon icon-heart"></i>
+                <span class="count">{{ article.likes }}</span>
+              </div>
               <!-- .post-header -->
               <div class="post-content">
-                <p>{{article.excerpt}}</p>
+                <p>{{ article.excerpt }}</p>
               </div>
               <div class="read-more">
                 <router-link :to="`/article/${article.id}`">READ MORE</router-link>
               </div>
+
               <!-- .post-content -->
             </article>
           </div>
@@ -81,7 +94,11 @@
                 </div>
                 <div class="post-header-wrap">
                   <h2 class="post-title">
-                    <router-link :to="`/article/${article.id}`">{{article.title}}</router-link>
+                    <router-link :to="`/article/${article.id}`">
+                      {{
+                      article.title
+                      }}
+                    </router-link>
                   </h2>
                   <div class="post-meta">
                     <div class="author-avatar">
@@ -93,24 +110,33 @@
                     </div>
                     <span class="post-author">
                       by
-                      <router-link
-                        :to="`/author/${article.author.id}`"
-                      >{{article.author.authorName}}</router-link>
+                      <router-link :to="`/author/${article.author.id}`">
+                        {{
+                        article.author.authorName
+                        }}
+                      </router-link>
                     </span>
                     <span class="post-date">
-                      <time
-                        class="published"
-                        datetime="2020-01-17"
-                      >{{timestampToTime(article.createDate)}}</time>
+                      <time class="published" datetime="2020-01-17">
+                        {{
+                        timestampToTime(article.createDate)
+                        }}
+                      </time>
                     </span>
                   </div>
                   <!-- .post-meta -->
                 </div>
                 <!-- .post-header-wrap -->
               </header>
+              <div class="info-wrapper">
+                <i class="icon icon-eye"></i>
+                <span class="count">{{ article.views }}</span>
+                <i class="icon icon-heart"></i>
+                <span class="count">{{ article.likes }}</span>
+              </div>
               <!-- .post-header -->
               <div class="post-content">
-                <p>{{article.excerpt}}</p>
+                <p>{{ article.excerpt }}</p>
               </div>
               <div class="read-more">
                 <router-link :to="`/article/${article.id}`">READ MORE</router-link>
@@ -202,7 +228,6 @@ export default {
   align-items: center;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  //justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -217,12 +242,22 @@ export default {
 .article-center {
   margin: 0 auto;
   text-align: center;
-  //flex: 0 0 75%;
   justify-content: center;
 }
-@media (max-width: 768px) {
+@media (min-width: 500px) and (max-width: 768px) {
   .featured-home-image {
     height: 240px;
+  }
+  .post {
+    .post-header {
+      .post-title {
+        font-size: 1.4em;
+      }
+    }
+  }
+
+  .right {
+    flex: 0 0 78%;
   }
 }
 @media (max-width: 1023px) {
@@ -231,6 +266,13 @@ export default {
   }
   .bg-medium {
     padding-bottom: 0vh;
+  }
+  .post {
+    .post-header {
+      .post-title {
+        font-size: 1.6em;
+      }
+    }
   }
   .left {
     -webkit-box-flex: 0;
@@ -242,9 +284,12 @@ export default {
     margin: 0 auto;
     text-align: center;
     -webkit-box-flex: 0;
-    //-ms-flex: 0 0 75%;
-    //flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
     justify-content: center;
+  }
+  .article-center {
+    flex: 0 0 75%;
   }
 }
 .post {
@@ -277,7 +322,6 @@ export default {
       &:hover {
         color: var(--theme-active);
       }
-      //color: #adabac;
     }
   }
   .post-title {
@@ -392,7 +436,6 @@ export default {
       -ms-flex: 0 0 auto;
       flex: 0 0 auto;
 
-      //float: left;
       margin: 2px 10px 0 0;
       .avatar {
         border-radius: 50%;
@@ -413,6 +456,24 @@ export default {
 @media (max-width: 640px) {
   .author-avatar {
     margin-top: 0;
+  }
+}
+.info-wrapper {
+  align-items: center;
+  font-size: $font-size-small;
+  color: var(--font-color-dark);
+  > i {
+    display: inline-block;
+    margin-right: 2px;
+  }
+
+  > span {
+    margin-right: 10px;
+    line-height: 1;
+  }
+
+  .count {
+    white-space: nowrap;
   }
 }
 </style>

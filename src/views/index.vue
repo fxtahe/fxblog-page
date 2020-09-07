@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      page: 0
+      page: 1
     };
   },
   methods: {
@@ -41,7 +41,7 @@ export default {
   },
   created() {
     this.$store.dispatch("article/getHomeArticles", {
-      page: 0
+      page: 1
     });
   }
 };

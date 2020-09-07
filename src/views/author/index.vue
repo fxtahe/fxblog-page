@@ -1,8 +1,9 @@
 <template>
-  <detail :id="id" :name="name" :type="author" :avatar="cover" :cover="cover"></detail>
+  <detail :id="id" :name="name" :type="author" :avatar="avatar" :cover="cover"></detail>
 </template>
 <script>
 import Detail from "@/components/SitemapDetail/index";
+import { mapState } from "vuex";
 export default {
   components: {
     Detail
@@ -12,8 +13,15 @@ export default {
     return {
       id: this.$route.params.id,
       name: this.$route.params.name,
-      cover: "https://resource.shirmy.me/lighthouse.jpeg"
+      cover: ""
     };
+  },
+  computed: {
+    ...mapState({
+      avatar(state) {
+        return state.sitemap.author.avatar;
+      }
+    })
   },
   created() {
     this.$store.dispatch("sitemap/getArticles", {

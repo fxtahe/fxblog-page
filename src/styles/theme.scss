@@ -11,7 +11,9 @@
   $link-color,
   $border-color,
   $tag-color,
-  $code-bg
+  $code-bg,
+  $search-color,
+  $search-input
 ) {
   --app-background-color: #{$theme-primary};
   --app-background-color-light: #{lighten($theme-primary, 3%)};
@@ -34,6 +36,8 @@
   --code-background: #{$code-bg};
 
   --link-color: #{$link-color};
+  --search-color: #{$search-color};
+  --search-input: #{$search-input};
 }
 
 body {
@@ -42,7 +46,7 @@ body {
       $theme-primary: #fff,
       $theme-navbar-color: #fff,
       $article-list-back: #f1f1f1ba,
-      $img-cover-color: none,
+      $img-cover-color: rgba(25, 28, 30, 0.15),
       $font-color: #161b3d,
       $font-color-article: #666,
       $font-color-light: #f7f7f7,
@@ -51,7 +55,9 @@ body {
       $link-color: #75bfd7,
       $border-color: #dcdfe7,
       $tag-color: #607dc1,
-      $code-bg: #f7f7f7
+      $code-bg: #f7f7f7,
+      $search-color: #6e798c,
+      $search-input: #90a3bd
     );
   }
 
@@ -69,7 +75,9 @@ body {
       $link-color: #f53b57,
       $border-color: #545c6f,
       $tag-color: #333844,
-      $code-bg: #21252c
+      $code-bg: #21252c,
+      $search-color: #272829,
+      $search-input: #54575d
     );
   }
 }

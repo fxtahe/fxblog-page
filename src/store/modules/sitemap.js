@@ -45,8 +45,6 @@ const actions = {
       const {
         data: { data: articles, total }
       } = await article.getArticles(params);
-      console.log(articles);
-      console.log(total);
       commit("SET_ARTICLES", { articles, total });
     } catch (e) {
       console.log(e);
@@ -77,7 +75,6 @@ const actions = {
       const author = authors[0];
       const categories = author.categories;
       const tags = author.tags;
-      console.log(author);
       commit("SET_AUTHOR_INFO", { author });
       commit("SET_TAGSANDCATEGORIES", { tags, categories });
       commit("SET_AUTHORS", { authors });

@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import PageHeader from "@/components/Header/Header.vue";
 import PageFooter from "@/components/Footer/Footer.vue";
 import ScrollTop from "@/components/ScrollTop/index";
@@ -57,6 +57,11 @@ export default {
       setTheme: "app/setTheme"
     })
   },
+  computed: {
+    ...mapState({
+      showSearch: state => state.app.showSearch
+    })
+  },
   mounted() {
     const theme = window.localStorage.getItem("THEME");
     this.setTheme(theme || "light");
@@ -71,7 +76,6 @@ export default {
 .logo-area {
   position: relative;
   width: 100%;
-  //background: #ffffff;
   padding: 48px 0px 40px 0px;
 }
 @media (max-width: 1023px) {

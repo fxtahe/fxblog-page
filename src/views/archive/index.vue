@@ -1,104 +1,50 @@
 <template>
   <div class="timeline">
-    <div class="container">
-      <div class="timeline-block timeline-block-left">
-        <div class="marker"></div>
-        <div class="timeline-content">
-          <h3>Seconed Year</h3>
-          <span>Some work experience</span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate.
-          </p>
+    <div v-for="(item, index) of Object.keys(archive).reverse()" :key="index">
+      <div class="time-center-container">
+        <div>
+          <h2>{{item}}</h2>
         </div>
       </div>
-
-      <div class="timeline-block timeline-block-right">
-        <div class="marker"></div>
-        <div class="timeline-content">
-          <h3>Third Year</h3>
-          <span>Some work experience</span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate.
-          </p>
-        </div>
-      </div>
-
-      <div class="timeline-block timeline-block-left">
-        <div class="marker"></div>
-        <div class="timeline-content">
-          <h3>Fourth Year</h3>
-          <span>Some work experience</span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate.
-          </p>
-        </div>
-      </div>
-
-      <div class="timeline-block timeline-block-right">
-        <div class="marker"></div>
-        <div class="timeline-content">
-          <h3>Fifth Year</h3>
-          <span>Some work experience</span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="time-center-container">
-      <div>
-        <h3>Arpil 2020</h3>
-      </div>
-    </div>
-    <div class="container">
-      <div class="timeline-block timeline-block-left">
-        <div class="marker"></div>
-        <div class="timeline-content">
-          <h3>Fourth Year</h3>
-          <span>Some work experience</span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate.
-          </p>
-        </div>
-      </div>
-
-      <div class="timeline-block timeline-block-right">
-        <div class="marker"></div>
-        <div class="timeline-content">
-          <h3>Fifth Year</h3>
-          <span>Some work experience</span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate.
-          </p>
+      <div class="container">
+        <div
+          :class="['timeline-block',index%2==0?'timeline-block-right':'timeline-block-left']"
+          v-for="(article,index) of archive[item]"
+          :key="article.id"
+        >
+          <div class="marker"></div>
+          <div class="timeline-content">
+            <span>{{article.createDate}}</span>
+            <h3>
+              <router-link :to="`/article/${article.id}`">{{article.title}}</router-link>
+            </h3>
+            <p>{{article.excerpt}}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+<script>
+import { mapState } from "vuex";
+export default {
+  data() {
+    return {
+      years: []
+    };
+  },
+  computed: {
+    ...mapState({
+      archive(state) {
+        return state.article.archive;
+      }
+    })
+  },
+  created() {
+    this.$store.dispatch("article/getArchive");
+  }
+};
+</script>
 <style lang="scss" scoped>
 * {
   -webkit-box-sizing: border-box;
@@ -171,12 +117,9 @@ h1 span {
 .marker {
   width: 16px;
   height: 16px;
-  //border-radius: 50%;var()
   border: 2px solid var(--app-background-color);
-  //background: #4fc1e9;
   background: var(--font-color-primary);
   margin-top: 10px;
-  z-index: 9999;
 }
 
 .timeline-content {
@@ -190,6 +133,11 @@ h1 span {
   margin-bottom: 5px;
   font-size: 25px;
   font-weight: 500;
+  a {
+    &:hover {
+      color: var(--theme-active);
+    }
+  }
 }
 
 .timeline-content span {

@@ -42,7 +42,6 @@ export default {
   margin-bottom: 10px;
   line-height: 20px;
   font-size: 12px;
-  //color: #a0a8bd;
   color: var(--theme-active);
   border: 1px solid transparent;
   background: rgba(160, 168, 189, 0.2);

@@ -51,8 +51,6 @@ export default {
         //滑动速度
         speed: 2000
       }
-      //三张轮播，使用变量循环
-      // swiperList: [1, 2, 3]
     };
   },
   methods: {
@@ -80,6 +78,7 @@ export default {
   padding-left: calc((100% - 1650px) / 2 + 15px);
   position: relative;
   @media (min-width: 1024px) {
+    @include container;
   }
 }
 .carousel-container {
@@ -123,32 +122,8 @@ export default {
 @media all and (max-width: 575px) {
   .carousel-container {
     .carousel-dots {
-      right: auto;
-      left: 15px;
-      bottom: 0;
-      flex-direction: row;
-      top: auto;
-      .carousel-dot {
-        margin-right: 10px;
-      }
+      display: none;
     }
-  }
-}
-@media (min-width: 1024px) {
-  .carousel {
-    //padding-top: 100px;
-    // &:before {
-    //   position: absolute;
-    //   left: 0;
-    //   top: 0;
-    //   //width: 160px;
-    //   height: calc(100% + 16px);
-    //   content: "";
-    //   background-color: #1a2024;
-    // }
-  }
-  .carousel-container {
-    @include container;
   }
 }
 </style>

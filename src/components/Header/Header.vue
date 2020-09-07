@@ -1,13 +1,19 @@
 <template>
   <header class="header">
     <div class="header-wrapper">
-      <div class="header-container" :class="[isTop && !isScrollFadeIn ? 'top' : '' , homeClass]">
-        <div class="header-logo">
-          <i class="logo">Fxblog</i>
-        </div>
+      <div class="header-container" :class="[isTop && !isScrollFadeIn ? 'top' : '', homeClass]">
+        <router-link :to="`/`">
+          <div class="header-logo">
+            <i class="logo">Fxblog</i>
+          </div>
+        </router-link>
         <nav class="nav-wrapper center-nav">
           <desktop-nav class="desktop desktop-nav" :navList="navList"></desktop-nav>
-          <mobile-menu :navList="navList"></mobile-menu>
+          <div class="search-wrapper">
+            <search></search>
+          </div>
+
+          <mobile-nav :navList="navList"></mobile-nav>
         </nav>
         <switch-theme class="desktop"></switch-theme>
       </div>
@@ -15,16 +21,16 @@
   </header>
 </template>
 <script>
+import Search from "../Search/Search";
 import DesktopNav from "@/components/Navbar/DesktopNav.vue";
-//import MobileNav from "@/components/Navbar/MobileNav.vue";
-import MobileMenu from "@/components/Navbar/MobileMenu.vue";
+import MobileNav from "@/components/Navbar/MobileNav.vue";
 import SwitchTheme from "@/components/SwitchTheme";
 export default {
   components: {
     DesktopNav,
-    //MobileNav,
+    MobileNav,
     SwitchTheme,
-    MobileMenu
+    Search
   },
   props: {
     navList: {
@@ -88,6 +94,10 @@ export default {
 .header-container {
   @include container;
 }
+.nav-wrapper {
+  display: flex;
+}
+
 @media (min-width: 1024px) {
   .center-nav {
     margin-left: auto;
@@ -148,18 +158,24 @@ export default {
 }
 
 @media (max-width: 1023px) {
-  .home-class {
-    position: absolute;
-    .header-logo,
-    a {
-      color: #fff;
-    }
-  }
 }
 
 @media (max-width: 1023px) {
   .desktop {
     display: none !important;
+  }
+  ::v-deep.home-class {
+    position: absolute;
+    .header-logo,
+    .icon-search {
+      color: #fff;
+    }
+  }
+  .search-wrapper {
+    margin-top: 14px;
+    ::v-deep.icon-search {
+      font-size: 1.4rem;
+    }
   }
 }
 .desktop-nav {

@@ -2,10 +2,12 @@ import article from "@/api/article";
 const state = () => ({
   articles: [],
   featureArticles: [],
+  searchArticles: [],
   total: 0,
   loading: false,
   article: null,
-  page: 0
+  page: 0,
+  archive: {}
 });
 
 const mutations = {
@@ -16,6 +18,10 @@ const mutations = {
     state.articles = articles;
     state.total = total;
     state.featureArticles = featureArticles;
+  },
+  SET_SEARCH_ARTICLES: (state, searchArticles) => {
+    state.searchArticles.pop();
+    state.searchArticles = searchArticles;
   },
   SET_MORE_ARTICLES: (state, { articles }) => {
     state.articles = state.articles.concat(articles);
@@ -28,19 +34,18 @@ const mutations = {
   },
   SET_ARTICLE_DETAIL: (state, article) => {
     state.article = article;
+  },
+  SET_ARCHIVE_ARTICLE: (state, archive) => {
+    state.archive = archive;
   }
 };
 const actions = {
   async getHomeArticles({ commit }, params) {
     try {
       const { data: featureArticles } = await article.getFeatureArticles();
-
-      console.log(featureArticles);
-
       const {
         data: { data: articles, total }
       } = await article.getArticles(params);
-      console.log(articles);
 
       commit("SET_HOME_ARTICLES", { articles, total, featureArticles });
     } catch (e) {
@@ -50,27 +55,48 @@ const actions = {
   },
   async getMoreArticles({ commit }, params) {
     try {
-      commit("setLoading", true);
-      const { data } = await article.getArticles(params);
-      commit("setMoreArticles", { data });
-      commit("setLoading", false);
+      commit("SET_LOADING", true);
+      const {
+        data: { data: articles }
+      } = await article.getArticles(params);
+      commit("SET_MORE_ARTICLES", { articles });
+      commit("SET_LOADING", false);
     } catch (e) {
-      commit("setLoading", false);
+      commit("SET_LOADING", false);
       // eslint-disable-next-line no-console
       console.log(e);
     }
   },
   async getArticleDetail({ commit }, params) {
     try {
-      const result = await article.getArticleDetail(params);
-      commit("setArticleDetail", result);
+      const { data } = await article.getArticleDetail(params);
+      commit("SET_ARTICLE_DETAIL", data);
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log(e);
     }
+  },
+  async searchArticles({ commit }, key) {
+    try {
+      if (key == "") {
+        commit("SET_SEARCH_ARTICLES", new Array());
+      } else {
+        const { data } = await article.searchArticles(key);
+        commit("SET_SEARCH_ARTICLES", data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  },
+  async getArchive({ commit }) {
+    try {
+      const { data: archive } = await article.getArchive();
+      commit("SET_ARCHIVE_ARTICLE", archive);
+    } catch (e) {
+      console.log(e);
+    }
   }
 };
-
 export default {
   namespaced: true,
   state,

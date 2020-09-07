@@ -1,57 +1,70 @@
 <template>
-  <div class="loading">
-    <div class="spinner">
-      <div class="double-bounce1"></div>
-      <div class="double-bounce2"></div>
+  <div>
+    <div class="middle">
+      <div class="bar bar1"></div>
+      <div class="bar bar2"></div>
+      <div class="bar bar3"></div>
+      <div class="bar bar4"></div>
+      <div class="bar bar5"></div>
+      <div class="bar bar6"></div>
+      <div class="bar bar7"></div>
+      <div class="bar bar8"></div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.loading {
-  display: flex;
-  justify-content: center;
-}
-
-.spinner {
+.middle {
+  width: fit-content;
   position: relative;
-  width: 40px;
-  height: 40px;
-
-  @media (max-width: 479px) {
-    width: 20px;
-    height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bar {
+  width: 6px;
+  height: 2px;
+  background: white;
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: loading 1.5s ease-in-out infinite;
+}
+.bar1 {
+  animation-delay: 0.1s;
+}
+.bar2 {
+  animation-delay: 0.2s;
+}
+.bar3 {
+  animation-delay: 0.3s;
+}
+.bar4 {
+  animation-delay: 0.4s;
+}
+.bar5 {
+  animation-delay: 0.5s;
+}
+.bar6 {
+  animation-delay: 0.6s;
+}
+.bar7 {
+  animation-delay: 0.7s;
+}
+.bar8 {
+  animation-delay: 0.8s;
+}
+@keyframes loading {
+  0% {
+    transform: scaleY(0.1);
+    background: #fff;
   }
-}
-
-.double-bounce1,
-.double-bounce2 {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #3063b2;
-  opacity: 0.6;
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation: bounce 2s infinite ease-in-out;
-}
-
-.double-bounce2 {
-  -webkit-animation-delay: -1s;
-  animation-delay: -1s;
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-
   50% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
+    transform: scaleY(30);
+    background: #2ecc71;
+  }
+  100% {
+    transform: scaleY(0.1);
+    background: transparent;
   }
 }
 </style>

@@ -12,7 +12,7 @@ export default {
     return {
       id: this.$route.params.id,
       name: this.$route.params.name,
-      cover: "https://resource.shirmy.me/lighthouse.jpeg"
+      cover: ""
     };
   },
   created() {

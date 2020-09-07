@@ -1,42 +1,42 @@
 <template>
-  <ul class="nav-list menu">
-    <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
-      <router-link class="nav-link" tag="a" :to="item.link">
-        {{
-        item.name
-        }}
-      </router-link>
-    </li>
-    <li class="nav-list-item">
-      <i class="icon icon-search" @click="showSearch"></i>
-    </li>
-  </ul>
+  <div class="desktop-nav">
+    <ul class="nav-list menu">
+      <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
+        <router-link class="nav-link" tag="a" :to="item.link">
+          {{
+          item.name
+          }}
+        </router-link>
+      </li>
+      <li class="nav-list-item"></li>
+    </ul>
+  </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapState } from "vuex";
 export default {
   props: {
     navList: Array
   },
   methods: {
     showSearch() {
-      this.showSearch(true);
-    },
-    ...mapActions({
-      showSearch: "app/setShowSearch"
+      this.$store.dispatch("app/setShowSearch", true);
+    }
+  },
+  computed: {
+    ...mapState({
+      visible: state => state.app.showSearch
     })
   }
 };
 </script>
 <style lang="scss" scoped>
+.desktop-nav {
+  display: flex;
+}
 .nav-list {
   display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // flex-wrap: wrap;
-  // font-size: 1rem;
-  // width: 100%;
-  // margin-right: 10%;
+  margin-right: 20px;
   .nav-list-item {
     position: relative;
     font-weight: normal;
@@ -70,38 +70,6 @@ export default {
   font-weight: 600;
   //transition: 0.3s linear;
   position: relative;
+  padding-right: 20px;
 }
-
-// .menu a:hover {
-//   color: var(--theme-active);
-// }
-
-// .menu a::before,
-// .menu a::after {
-//   content: "";
-//   position: absolute;
-//   width: 100%;
-//   height: 0%;
-//   //left: 0;
-//   box-sizing: border-box;
-//   z-index: -1;
-// }
-
-// .menu a::before {
-//   bottom: 0;
-//   border-left: 1px solid #f1f1f1;
-//   border-right: 1px solid #f1f1f1;
-//   transition: 0.3s linear;
-// }
-
-// .menu a::after {
-//   top: 0;
-//   background-color: #f1f1f1;
-//   transition: 0.3s linear 0.3s;
-// }
-
-// .menu a:hover::before,
-// .menu a:hover::after {
-//   height: 100%;
-// }
 </style>
