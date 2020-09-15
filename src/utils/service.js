@@ -11,7 +11,7 @@ const service = axios.create({
 
 // request interceptor
 service.interceptors.request.use(
-  (config) => {
+  config => {
     // 默认使用 get 请求
     if (!config.method) {
       config.method = "get";
@@ -20,7 +20,7 @@ service.interceptors.request.use(
 
     return config;
   },
-  (error) => {
+  error => {
     // do something with request error
     console.log(error); // for debug
     return Promise.reject(error);
@@ -28,12 +28,12 @@ service.interceptors.request.use(
 );
 
 service.interceptors.response.use(
-  (response) => {
+  response => {
     if (response.status === 200 && response.data.code === 200) {
       return response.data;
     }
   },
-  (error) => {
+  error => {
     // for debug
     console.log(error);
     return Promise.reject(error);

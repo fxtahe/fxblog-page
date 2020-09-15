@@ -1,21 +1,22 @@
 <template>
   <div class="sitemap">
-    <div class="author" v-if="authors.length>1">
+    <div class="author" v-if="authors.length > 1">
       <ul class="author-list">
         <li v-for="author in authors" :key="author.id">
           <div class="author-avatar">
             <img
               :src="author.avatar"
-              :class="authorInfo.id==author.id?'active':''"
+              :class="authorInfo.id == author.id ? 'active' : ''"
               @click="changeAuthor(author)"
               :alt="author.authorName"
             />
             <p>
               <router-link
                 class="author-link"
-                :class="authorInfo.id==author.id?'active':''"
+                :class="authorInfo.id == author.id ? 'active' : ''"
                 :to="`/author/${author.authorName}/${author.id}`"
-              >{{author.authorName}}</router-link>
+                >{{ author.authorName }}</router-link
+              >
             </p>
           </div>
         </li>
@@ -26,7 +27,7 @@
         <div class="sitemap-title">Tags</div>
         <transition name="fade-transform" mode="out-in">
           <div class="tags-wrapper" :key="index">
-            <tags :tags="tags" v-if="tags && tags.length>0"></tags>
+            <tags :tags="tags" v-if="tags && tags.length > 0"></tags>
             <p v-else>空空如也~</p>
           </div>
         </transition>
@@ -34,7 +35,11 @@
       <div class="category">
         <div class="sitemap-title">Categorys</div>
         <transition name="fade-transform" mode="out-in">
-          <ul class="category-list" :key="index" v-if="categories && categories.length>0">
+          <ul
+            class="category-list"
+            :key="index"
+            v-if="categories && categories.length > 0"
+          >
             <router-link
               :tag="`li`"
               v-for="category in categories"
@@ -46,10 +51,14 @@
               <div class="category-wrapper">
                 <div
                   class="category-image"
-                  :style="{backgroundImage: `url(${category.cover==''?defaultCover:category.cover})`}"
+                  :style="{
+                    backgroundImage: `url(${
+                      category.cover == '' ? defaultCover : category.cover
+                    })`
+                  }"
                 ></div>
-                <h2 class="title">{{category.categoryName}}</h2>
-                <p class="desc">{{category.description}}</p>
+                <h2 class="title">{{ category.categoryName }}</h2>
+                <p class="desc">{{ category.description }}</p>
               </div>
             </router-link>
           </ul>

@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <div class="row">
-      <input type="checkbox" :checked="theme === 'dark' " id="box" @click="switchTheme" />
+      <input
+        type="checkbox"
+        :checked="theme === 'dark'"
+        id="box"
+        @click="switchTheme"
+      />
       <label for="box" class="theme"></label>
     </div>
   </div>

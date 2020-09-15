@@ -49,7 +49,7 @@ const linkParser = (href, title, text) => {
 
 renderer.link = linkParser;
 
-export default (content) => {
+export default content => {
   if (typeof content !== "string") {
     return "";
   }

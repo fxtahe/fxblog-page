@@ -18,13 +18,18 @@
           <i class="icon icon-close"></i>
         </div>
         <ul class="nav-list">
-          <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
+          <li
+            class="nav-list-item"
+            v-for="(item, index) in navList"
+            :key="index"
+          >
             <router-link
               class="nav-link"
               tag="a"
               :to="item.link"
               @click.native="isShowMobileNav = false"
-            >{{ item.name }}</router-link>
+              >{{ item.name }}</router-link
+            >
           </li>
         </ul>
         <switch-theme></switch-theme>

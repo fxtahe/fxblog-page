@@ -20,11 +20,13 @@
           <div class="popover-body">
             <div class="results" data-other="Other" v-show="result">
               <div v-for="category in result" :key="category.id">
-                <h5>{{category.categoryName}}</h5>
+                <h5>{{ category.categoryName }}</h5>
                 <ul :data-tag="category.categoryName" class="list-box">
                   <li v-for="article in category.articles" :key="article.id">
                     <time>17 Apr 2018</time>
-                    <p class="article-title" @click="selectArticle(article.id)">{{article.title}}</p>
+                    <p class="article-title" @click="selectArticle(article.id)">
+                      {{ article.title }}
+                    </p>
                   </li>
                 </ul>
               </div>

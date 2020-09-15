@@ -3,7 +3,11 @@
     <div class="carousel-container">
       <div class="carousel-stage" style="width:100%">
         <swiper :options="swiperOption">
-          <swiper-slide class="swiper-item" v-for="item of articles" :key="item.id">
+          <swiper-slide
+            class="swiper-item"
+            v-for="item of articles"
+            :key="item.id"
+          >
             <carousel-item :article="item"></carousel-item>
           </swiper-slide>
         </swiper>

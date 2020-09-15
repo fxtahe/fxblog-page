@@ -2,7 +2,12 @@
   <div>
     <carousel-card :articles="featureArticles"></carousel-card>
     <section class="article-wrapper">
-      <article-list :articles="articles" :loading="loading" :total="total" @loadMore="onLoadMore"></article-list>
+      <article-list
+        :articles="articles"
+        :loading="loading"
+        :total="total"
+        @loadMore="onLoadMore"
+      ></article-list>
     </section>
   </div>
 </template>

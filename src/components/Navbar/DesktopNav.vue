@@ -3,9 +3,7 @@
     <ul class="nav-list menu">
       <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
         <router-link class="nav-link" tag="a" :to="item.link">
-          {{
-          item.name
-          }}
+          {{ item.name }}
         </router-link>
       </li>
       <li class="nav-list-item"></li>

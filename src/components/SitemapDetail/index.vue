@@ -1,20 +1,28 @@
 <template>
   <div class="tags-detail-container">
-    <header-detail :description="description" :cover="cover==''?defaultCover:cover">
+    <header-detail
+      :description="description"
+      :cover="cover == '' ? defaultCover : cover"
+    >
       <template v-slot:info>
         <div class="avatar" v-if="avatar">
           <img :src="avatar" />
-          <span>{{name}}</span>
+          <span>{{ name }}</span>
         </div>
-        <h1 class="title" v-else>{{name}}</h1>
+        <h1 class="title" v-else>{{ name }}</h1>
         <div class="posts-number">
           <i class="icon icon-post"></i>
-          <span>{{total || 0}}&nbsp;posts</span>
+          <span>{{ total || 0 }}&nbsp;posts</span>
         </div>
       </template>
     </header-detail>
     <section class="article-wrapper">
-      <article-list :articles="articles" :loading="loading" :total="total" @loadMore="onLoadMore"></article-list>
+      <article-list
+        :articles="articles"
+        :loading="loading"
+        :total="total"
+        @loadMore="onLoadMore"
+      ></article-list>
     </section>
   </div>
 </template>

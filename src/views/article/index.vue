@@ -11,27 +11,29 @@
                 :to="
                   `/category/${article.category.categoryName}/${article.category.id}`
                 "
-              >{{ article.category.categoryName }}</router-link>
+              >
+                {{ article.category.categoryName }}
+              </router-link>
             </p>
             <p>
               <time class="post-date" :datetime="article.createDate">
-                {{
-                timestampToTime(article.createDate)
-                }}
+                {{ timestampToTime(article.createDate) }}
               </time>
             </p>
           </div>
           <h1 class="title">{{ article.title }}</h1>
           <div class="author-meta">
             <div class="author-avatar">
-              <img class="avatar" :src="article.author.avatar" :alt="article.author.authorName" />
+              <img
+                class="avatar"
+                :src="article.author.avatar"
+                :alt="article.author.authorName"
+              />
             </div>
             <span class="post-author">
               by
               <router-link :to="`/author/${article.author.id}`">
-                {{
-                article.author.authorName
-                }}
+                {{ article.author.authorName }}
               </router-link>
             </span>
           </div>
@@ -41,7 +43,11 @@
     <div class="article-container">
       <div class="content">
         <div class="article-wrapper">
-          <article ref="markedContent" class="markdown" v-html="markedContent"></article>
+          <article
+            ref="markedContent"
+            class="markdown"
+            v-html="markedContent"
+          ></article>
         </div>
       </div>
     </div>

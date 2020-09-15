@@ -1,13 +1,13 @@
 <template>
   <header
     class="detail-header"
-    :style="{backgroundImage: `url(${cover})`}"
+    :style="{ backgroundImage: `url(${cover})` }"
     :class="cover ? 'is-cover' : ''"
   >
     <div class="detail-content">
       <slot name="header"></slot>
       <slot name="info"></slot>
-      <p v-if="description" class="desc">{{description}}</p>
+      <p v-if="description" class="desc">{{ description }}</p>
     </div>
   </header>
 </template>

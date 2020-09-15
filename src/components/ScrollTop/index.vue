@@ -80,4 +80,4 @@ export default {
   cursor: pointer;
   z-index: $index-popper;
 }
-</style>>
+</style>

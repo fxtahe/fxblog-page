@@ -1,6 +1,9 @@
 <template>
   <div class="carousel-item">
-    <div class="carousel-item-wrapper" :style="{backgroundImage: 'url(' + articleCover + ')'}">
+    <div
+      class="carousel-item-wrapper"
+      :style="{ backgroundImage: 'url(' + articleCover + ')' }"
+    >
       <div class="feature-content">
         <div class="tag-list">
           <tags :tags="article.tags"></tags>
@@ -10,31 +13,41 @@
             <router-link
               class="category-name"
               :to="`/category/${category.categoryName}/${category.id}`"
-            >{{category.categoryName}}</router-link>
+              >{{ category.categoryName }}</router-link
+            >
           </p>
           <p>
-            <time
-              class="post-date"
-              :datetime="article.createDate"
-            >{{timestampToTime(article.createDate)}}</time>
+            <time class="post-date" :datetime="article.createDate">
+              {{ timestampToTime(article.createDate) }}
+            </time>
           </p>
         </div>
         <div>
           <h2>
-            <router-link :to="`/article/${article.id}`" class="article-title">{{article.title}}</router-link>
+            <router-link :to="`/article/${article.id}`" class="article-title">{{
+              article.title
+            }}</router-link>
           </h2>
         </div>
         <div class="author-meta">
           <div class="author-avatar">
-            <img class="avatar" :src="article.author.avatar" :alt="article.author.authorName" />
+            <img
+              class="avatar"
+              :src="article.author.avatar"
+              :alt="article.author.authorName"
+            />
           </div>
           <span class="post-author">
             by
-            <router-link :to="`/author/${article.author.id}`">{{article.author.authorName}}</router-link>
+            <router-link :to="`/author/${article.author.id}`">{{
+              article.author.authorName
+            }}</router-link>
           </span>
         </div>
         <div class="read-more">
-          <router-link :to="`/article/${article.id}`">CONTINUE READING</router-link>
+          <router-link :to="`/article/${article.id}`"
+            >CONTINUE READING</router-link
+          >
         </div>
       </div>
     </div>

@@ -3,22 +3,27 @@
     <div v-for="(item, index) of Object.keys(archive).reverse()" :key="index">
       <div class="time-center-container">
         <div>
-          <h2>{{item}}</h2>
+          <h2>{{ item }}</h2>
         </div>
       </div>
       <div class="container">
         <div
-          :class="['timeline-block',index%2==0?'timeline-block-right':'timeline-block-left']"
-          v-for="(article,index) of archive[item]"
+          :class="[
+            'timeline-block',
+            index % 2 == 0 ? 'timeline-block-right' : 'timeline-block-left'
+          ]"
+          v-for="(article, index) of archive[item]"
           :key="article.id"
         >
           <div class="marker"></div>
           <div class="timeline-content">
-            <span>{{article.createDate}}</span>
+            <span>{{ article.createDate }}</span>
             <h3>
-              <router-link :to="`/article/${article.id}`">{{article.title}}</router-link>
+              <router-link :to="`/article/${article.id}`">{{
+                article.title
+              }}</router-link>
             </h3>
-            <p>{{article.excerpt}}</p>
+            <p>{{ article.excerpt }}</p>
           </div>
         </div>
       </div>

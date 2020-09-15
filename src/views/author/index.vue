@@ -1,5 +1,11 @@
 <template>
-  <detail :id="id" :name="name" :type="author" :avatar="avatar" :cover="cover"></detail>
+  <detail
+    :id="id"
+    :name="name"
+    :type="author"
+    :avatar="avatar"
+    :cover="cover"
+  ></detail>
 </template>
 <script>
 import Detail from "@/components/SitemapDetail/index";
@@ -31,5 +37,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

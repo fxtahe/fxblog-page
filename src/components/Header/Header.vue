@@ -1,14 +1,20 @@
 <template>
   <header class="header">
     <div class="header-wrapper">
-      <div class="header-container" :class="[isTop && !isScrollFadeIn ? 'top' : '', homeClass]">
+      <div
+        class="header-container"
+        :class="[isTop && !isScrollFadeIn ? 'top' : '', homeClass]"
+      >
         <router-link :to="`/`">
           <div class="header-logo">
             <i class="logo">Fxblog</i>
           </div>
         </router-link>
         <nav class="nav-wrapper center-nav">
-          <desktop-nav class="desktop desktop-nav" :navList="navList"></desktop-nav>
+          <desktop-nav
+            class="desktop desktop-nav"
+            :navList="navList"
+          ></desktop-nav>
           <div class="search-wrapper">
             <search></search>
           </div>

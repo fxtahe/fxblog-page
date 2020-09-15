@@ -20,7 +20,8 @@
         <span class="copyright">
           © 2020
           <span class="logo">Fxblog</span>
-        </span>. All Right Reserved.
+        </span>
+        . All Right Reserved.
         <div class="record-number">♥</div>
       </div>
     </div>

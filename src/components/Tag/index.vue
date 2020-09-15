@@ -3,9 +3,7 @@
     <ul class="tags">
       <li v-for="(tag, index) in tags" :key="index">
         <router-link :class="`tag`" :to="`/tag/${tag.tagName}/${tag.id}`">
-          {{
-          tag.tagName
-          }}
+          {{ tag.tagName }}
         </router-link>
       </li>
     </ul>

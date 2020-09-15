@@ -30,9 +30,7 @@
                 <div class="post-header-wrap">
                   <h2 class="post-title">
                     <router-link :to="`/article/${article.id}`">
-                      {{
-                      article.title
-                      }}
+                      {{ article.title }}
                     </router-link>
                   </h2>
                   <div class="post-meta">
@@ -46,16 +44,12 @@
                     <span class="post-author">
                       by
                       <router-link :to="`/author/${article.author.id}`">
-                        {{
-                        article.author.authorName
-                        }}
+                        {{ article.author.authorName }}
                       </router-link>
                     </span>
                     <span class="post-date">
                       <time class="published" datetime="2020-01-17">
-                        {{
-                        timestampToTime(article.createDate)
-                        }}
+                        {{ timestampToTime(article.createDate) }}
                       </time>
                     </span>
                   </div>
@@ -74,7 +68,9 @@
                 <p>{{ article.excerpt }}</p>
               </div>
               <div class="read-more">
-                <router-link :to="`/article/${article.id}`">READ MORE</router-link>
+                <router-link :to="`/article/${article.id}`"
+                  >READ MORE</router-link
+                >
               </div>
 
               <!-- .post-content -->
@@ -95,9 +91,7 @@
                 <div class="post-header-wrap">
                   <h2 class="post-title">
                     <router-link :to="`/article/${article.id}`">
-                      {{
-                      article.title
-                      }}
+                      {{ article.title }}
                     </router-link>
                   </h2>
                   <div class="post-meta">
@@ -111,16 +105,12 @@
                     <span class="post-author">
                       by
                       <router-link :to="`/author/${article.author.id}`">
-                        {{
-                        article.author.authorName
-                        }}
+                        {{ article.author.authorName }}
                       </router-link>
                     </span>
                     <span class="post-date">
                       <time class="published" datetime="2020-01-17">
-                        {{
-                        timestampToTime(article.createDate)
-                        }}
+                        {{ timestampToTime(article.createDate) }}
                       </time>
                     </span>
                   </div>
@@ -139,7 +129,9 @@
                 <p>{{ article.excerpt }}</p>
               </div>
               <div class="read-more">
-                <router-link :to="`/article/${article.id}`">READ MORE</router-link>
+                <router-link :to="`/article/${article.id}`"
+                  >READ MORE</router-link
+                >
               </div>
               <!-- .post-content -->
             </article>
