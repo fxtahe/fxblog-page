@@ -10,7 +10,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
-    "dompurify": "^2.0.12",
+    "dompurify": "^2.0.17",
     "highlight.js": "^9.18.1",
     "marked": "^1.1.0",
     "simplebar-vue": "^2.0.0-beta.4",
